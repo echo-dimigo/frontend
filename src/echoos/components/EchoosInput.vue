@@ -1,6 +1,4 @@
 <script>
-// todo: emit enter
-
 export default {
   name: 'EchoosInput',
   props: {
