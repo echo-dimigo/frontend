@@ -42,6 +42,8 @@ export default {
   display: flex;
   align-items: center;
 
+  background-color: $light-gray;
+
   &__brand {
     height: 3rem;
 
