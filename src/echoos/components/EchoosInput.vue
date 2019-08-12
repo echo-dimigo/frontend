@@ -62,7 +62,5 @@ export default {
   padding-left: 1rem;
 
   outline: none;
-
-  font-weight: 200;
 }
 </style>
