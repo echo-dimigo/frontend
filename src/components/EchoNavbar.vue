@@ -18,7 +18,7 @@ export default {
       class="navbar__brand__logo"
       :src="Brand"
     >
-    <span class="navbar__brand__title">
+    <span class="navbar__brand__name">
       ECHO
     </span>
   </div>
@@ -55,9 +55,14 @@ export default {
       height: 3rem;
     }
 
-    &__title {
+    &__name {
       color: $brand;
+      user-select: none;
+
+      margin-left: 0.3em;
+
       font-family: 'Jua', sans-serif;
+      font-size: 1.5em;
     }
   }
 
