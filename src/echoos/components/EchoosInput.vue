@@ -1,5 +1,5 @@
 <script>
-// todo: emit enter and v-model
+// todo: emit enter
 
 export default {
   name: 'EchoosInput',
@@ -11,6 +11,31 @@ export default {
     placeholder: {
       type: String,
       default: null
+    },
+    value: {
+      type: [ String, Number ],
+      default: null
+    }
+  },
+
+  data () {
+    return {
+      inputValue: null
+    }
+  },
+
+  watch: {
+    value (v) {
+      this.inputValue = v
+    },
+    inputValue (v) {
+      this.$emit('input', v)
+    }
+  },
+
+  methods: {
+    emitEnter () {
+      this.$emit('enter')
     }
   }
 }
@@ -19,6 +44,7 @@ export default {
 <template>
 <input
   class="input"
+  v-model="inputValue"
   :type="type"
   :placeholder="placeholder"
 >
