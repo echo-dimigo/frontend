@@ -47,6 +47,7 @@ export default {
   v-model="inputValue"
   :type="type"
   :placeholder="placeholder"
+  @keyup.enter="emitEnter"
 >
 </template>
 
