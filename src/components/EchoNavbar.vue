@@ -25,7 +25,7 @@ export default {
   <div class="navbar__search">
     <echoos-input
       class="navbar__search__input"
-      placeholder="작성자, 게시물을 검색해보세요"
+      placeholder="🔎 작성자, 게시물을 검색해보세요"
     />
   </div>
 </nav>
