@@ -44,6 +44,8 @@ export default {
 
   background-color: $light-gray;
 
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
+
   &__brand {
     height: 3rem;
 
