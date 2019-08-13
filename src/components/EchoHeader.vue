@@ -2,7 +2,7 @@
 import Brand from '@/assets/logo.png'
 
 export default {
-  name: 'EchoNavbar',
+  name: 'EchoHeader',
   data () {
     return {
       Brand
@@ -12,30 +12,30 @@ export default {
 </script>
 
 <template>
-<nav class="navbar">
-  <div class="navbar__brand">
+<header class="header">
+  <div class="header__brand">
     <img
-      class="navbar__brand__logo"
+      class="header__brand__logo"
       :src="Brand"
     >
-    <span class="navbar__brand__name">
+    <span class="header__brand__name">
       ECHO
     </span>
   </div>
-  <div class="navbar__search">
+  <div class="header__search">
     <echoos-input
-      class="navbar__search__input"
+      class="header__search__input"
       placeholder="🔎 작성자, 게시물을 검색해보세요"
     />
   </div>
-</nav>
+</header>
 </template>
 
 <style lang="scss" scoped>
 @import '../scss/colors.scss';
 @import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
 
-.navbar {
+.header {
   min-height: 4.5rem;
   padding: 0 3rem;
 

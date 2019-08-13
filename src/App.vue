@@ -1,18 +1,16 @@
 <script>
-import EchoNavbar from '@/components/EchoNavbar.vue'
-import SwaggyNotification from '@/components/SwaggyNotification.vue'
+import EchoHeader from '@/components/EchoHeader.vue'
 
 export default {
   name: 'App',
-  components: { EchoNavbar, SwaggyNotification }
+  components: { EchoHeader }
 }
 </script>
 
 <template>
   <div id="app">
-    <echo-navbar />
+    <echo-header />
     <router-view />
-    <swaggy-notification />
   </div>
 </template>
 
