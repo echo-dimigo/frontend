@@ -95,6 +95,7 @@ export default {
       background-size: cover;
       border-radius: 50%;
       border: solid 1px rgba(21, 19, 19, 0.05);
+      margin-right: 7px;
     }
 
     &__name {
