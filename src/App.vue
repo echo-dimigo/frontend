@@ -10,7 +10,7 @@ export default {
 <template>
   <div id="app">
     <echo-navbar />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
