@@ -94,6 +94,7 @@ export default {
       display: inline-block;
       background-size: cover;
       border-radius: 50%;
+      border: solid 1px rgba(21, 19, 19, 0.05);
     }
 
     &__name {
