@@ -25,15 +25,15 @@ export default {
 
 <template>
   <div class="noti">
-    <div class="noti__header">
+    <div
+      class="noti__header"
+      @click="toggleExpand"
+    >
       <h3 class="noti__header__title">
         <i class="noti__icon fas fa-bell" />알림 모음
         ({{ noties.length }})
       </h3>
-      <div
-        class="noti__header__expand"
-        @click="toggleExpand"
-      >
+      <div class="noti__header__expand">
         <i :class="{
           'noti__header__expand__icon': true,
           'fas': true,
