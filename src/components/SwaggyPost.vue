@@ -44,6 +44,9 @@ export default {
       </div>
     </div>
     <div class="post__content">
+      <span class="post__content__title">
+        {{ post.title }}
+      </span>
       {{ post.content }}
     </div>
     <div class="post__reaction">
@@ -110,6 +113,13 @@ export default {
 
   &__content {
     padding: 15px 6px;
+    line-height: 25px;
+
+    &__title {
+      display: block;
+      line-height: 40px;
+      font-weight: bold;
+    }
   }
 
   &__reaction {
@@ -135,7 +145,7 @@ export default {
     justify-content: space-between;
 
     &__input {
-      width: 70%;
+      width: 75%;
       display: inline-block;
     }
   }
