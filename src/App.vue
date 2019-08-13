@@ -1,9 +1,10 @@
 <script>
 import EchoNavbar from '@/components/EchoNavbar.vue'
+import SwaggyNotification from '@/components/SwaggyNotification.vue'
 
 export default {
   name: 'App',
-  components: { EchoNavbar }
+  components: { EchoNavbar, SwaggyNotification }
 }
 </script>
 
@@ -11,6 +12,7 @@ export default {
   <div id="app">
     <echo-navbar />
     <router-view />
+    <swaggy-notification />
   </div>
 </template>
 

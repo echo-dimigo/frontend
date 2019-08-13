@@ -43,7 +43,10 @@ export default {
       </div>
     </div>
     <template v-if="expand">
-      <div class="noti__list">
+      <div
+        v-if="noties.length"
+        class="noti__list"
+      >
         <div
           :key="`noti-${i}`"
           v-for="(noti, i) in noties"
@@ -56,6 +59,13 @@ export default {
             {{ noti.content }}
           </span>
         </div>
+      </div>
+
+      <div
+        v-else
+        class="noti__list noti__list-empty"
+      >
+        아직 도착한 알림이 없습니다.
       </div>
 
       <div class="noti__button">
@@ -102,6 +112,10 @@ export default {
   &__list {
     border-top: solid 1.5px rgba(21, 19, 19, 0.05);
     border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
+
+    &-empty {
+      padding: 20px 0;
+    }
 
     &__item {
       padding: 18px 0;
