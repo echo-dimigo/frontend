@@ -15,6 +15,12 @@ export default {
     formatDate (val) {
       return format(val, 'M월 D일 h시 m분')
     }
+  },
+
+  data () {
+    return {
+      comment: null
+    }
   }
 }
 </script>
@@ -48,6 +54,18 @@ export default {
         좋아요 {{ post.likes.length }}개
       </span>
     </div>
+    <div class="post__add-comment">
+      <echoos-input
+        v-model="comment"
+        placeholder="남기고 싶은 말을 입력해주세요"
+        class="post__add-comment__input"
+      />
+      <echoos-button
+        class="post__add-comment__button"
+      >
+        댓글 달기
+      </echoos-button>
+    </div>
   </article>
 </template>
 
@@ -58,7 +76,7 @@ export default {
   border-radius: 6px;
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
-  padding: 5px;
+  padding: 6px 10px;
 
   /** 임시 */
   width: 50%;
@@ -67,7 +85,7 @@ export default {
   &__info {
     display: flex;
     align-items: center;
-    padding: 6px;
+    padding: 6px 0;
     border-bottom: solid 2px rgba(21, 19, 19, 0.05);
 
     &__image {
@@ -96,6 +114,8 @@ export default {
     width: 100%;
     height: 2rem;
 
+    border-bottom: solid 2px rgba(21, 19, 19, 0.05);
+
     &__comment,
     &__like {
       float: right;
@@ -104,6 +124,17 @@ export default {
 
     &__like {
       margin-right: 8px;
+    }
+  }
+
+  &__add-comment {
+    padding: 15px 6px;
+    display: flex;
+    justify-content: space-between;
+
+    &__input {
+      width: 70%;
+      display: inline-block;
     }
   }
 }
