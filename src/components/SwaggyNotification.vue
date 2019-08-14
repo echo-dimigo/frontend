@@ -12,6 +12,10 @@ export default {
   methods: {
     toggleExpand () {
       this.expand = !this.expand
+    },
+
+    push (to) {
+      this.$router.push(to)
     }
   },
 
@@ -68,7 +72,10 @@ export default {
         아직 도착한 알림이 없습니다.
       </div>
 
-      <div class="noti__button">
+      <div
+        @click="push('/notification')"
+        class="noti__button"
+      >
         알림 모아보기
       </div>
     </template>
@@ -135,11 +142,12 @@ export default {
   }
 
   &__button {
-    padding: 20px 0;
+    padding: 1em 0;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
   }
 }
 </style>
