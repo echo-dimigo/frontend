@@ -70,6 +70,7 @@ export default {
 
   &__content {
     width: 60%;
+    box-sizing: border-box;
 
     @media (max-width: 900px) {
       width: 100%;
