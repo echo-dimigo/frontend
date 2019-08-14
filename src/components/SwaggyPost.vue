@@ -79,11 +79,9 @@ export default {
   border-radius: 6px;
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
-  padding: 6px 10px;
+  background-color: $white;
 
-  /** 임시 */
-  width: 50%;
-  margin: 50px;
+  padding: 6px 10px;
 
   &__info {
     display: flex;
@@ -146,7 +144,8 @@ export default {
     justify-content: space-between;
 
     &__input {
-      width: 75%;
+      flex: 1;
+      margin-right: 5px;
       display: inline-block;
     }
   }

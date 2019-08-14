@@ -4,8 +4,8 @@ export default {
 
   props: {
     noties: {
-      type: () => [],
-      default: []
+      type: Array,
+      default: () => []
     }
   },
 
@@ -82,11 +82,9 @@ export default {
   border-radius: 6px;
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
-  padding: 6px 15px;
+  background-color: $white;
 
-  /** 임시 */
-  width: 20%;
-  margin: 50px;
+  padding: 6px 15px;
 
   &__icon {
     margin-right: 8px;

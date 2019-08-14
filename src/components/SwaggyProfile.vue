@@ -35,11 +35,8 @@ export default {
   border-radius: 6px;
   border: solid 1px rgba(21, 19, 19, 0.05);
 
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
-  /** 임시; 나중에 레이아웃 짜면 고칠 거임 */
-  height: 15rem;
-  width: 15rem;
+  background-color: $white;
+  padding: 25px;
 
   &__info {
     display: flex;

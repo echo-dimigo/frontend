@@ -36,8 +36,13 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
 
 .header {
-  min-height: 4.5rem;
+  height: 4.5rem;
   padding: 0 3rem;
+
+  @media (max-width: 900px) {
+    padding: 0 1rem;
+    height: 3rem;
+  }
 
   display: flex;
   align-items: center;
@@ -49,12 +54,20 @@ export default {
   &__brand {
     height: 3rem;
 
+    @media (max-width: 900px) {
+      height: 2rem;
+    }
+
     display: flex;
     justify-content: center;
     align-items: center;
 
     &__logo {
       height: 3rem;
+
+      @media (max-width: 900px) {
+        height: 2rem;
+      }
     }
 
     &__name {
@@ -70,6 +83,11 @@ export default {
 
   &__search {
     margin-left: auto;
+
+    /** todo: 모바일용 검색창 */
+    @media (max-width: 900px) {
+      display: none;
+    }
 
     &__input {
       width: 20rem;
