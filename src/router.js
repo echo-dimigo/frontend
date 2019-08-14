@@ -23,6 +23,11 @@ export default new Router({
       path: '/post/new',
       name: 'addPost',
       component: AddPost
+    },
+    {
+      path: '*',
+      name: 'notFound',
+      component: () => import(/* webpackChunkName: "notFound" */ './views/NotFound.vue')
     }
   ]
 })
