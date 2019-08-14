@@ -60,7 +60,7 @@ export default {
     <div class="post__add-comment">
       <echoos-input
         v-model="comment"
-        placeholder="남기고 싶은 말을 입력해주세요"
+        placeholder="댓글을 입력하세요"
         class="post__add-comment__input"
       />
       <echoos-button
