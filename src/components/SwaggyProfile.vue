@@ -22,7 +22,10 @@ export default {
       </span>
     </div>
     <div class="profile__tool">
-      <i class="profile__tool__icon icon-edit"/>
+      <i
+        @click="push('/post/new')"
+        class="profile__tool__icon icon-edit"
+      />
       <i
         @click="push('/profile')"
         class="profile__tool__icon icon-setting"
