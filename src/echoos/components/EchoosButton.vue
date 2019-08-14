@@ -19,6 +19,7 @@ export default {
 
 <template>
   <button
+    v-ripple="'rgba(255, 255, 255, .2)'"
     :class="{
       'button': true,
       'button-disabled': disabled
@@ -38,6 +39,9 @@ export default {
 
   background-color: $brand;
   color: white;
+  cursor: pointer;
+
+  transition: 0.5s background-color ease;
 
   padding: 0.5rem 2rem;
 
