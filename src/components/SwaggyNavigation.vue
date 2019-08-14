@@ -81,6 +81,12 @@ export default {
         {{ item.title }}
       </span>
     </div>
+    <div
+      @click="push('/page/all')"
+      class="nav__all-page"
+    >
+      구독 페이지 전체 보기
+    </div>
   </nav>
 </template>
 
@@ -89,7 +95,7 @@ export default {
 
 .nav {
   background-color: $white;
-  padding: 1em 0;
+  padding: 1em 0 0;
 
   border-radius: 6px;
   border: solid 1.5px rgba(21, 19, 19, 0.05);
@@ -136,6 +142,15 @@ export default {
         }
       }
     }
+  }
+
+  &__all-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: solid 1.5px rgba(21, 19, 19, 0.05);
+    user-select: none;
+    padding: 1em 0;
   }
 }
 </style>
