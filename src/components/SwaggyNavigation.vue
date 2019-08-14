@@ -6,6 +6,12 @@ export default {
     push (val) {
       this.current = val
       this.$router.push(this.menus[val].to)
+    },
+
+    isCurrent (val) {
+      const path = this.$route.path
+
+      return path === '/' && val === this.current
     }
   },
 
@@ -16,32 +22,32 @@ export default {
         {
           title: '구독 페이지 전체',
           notification: 2,
-          to: ''
+          to: '/'
         },
         {
           title: '페이지 전체',
           notification: 0,
-          to: ''
+          to: '/'
         },
         {
           title: '클립한 글',
           notification: 0,
-          to: ''
+          to: '/'
         },
         {
           title: 'JnJ 일반 동아리',
           notification: 10,
-          to: ''
+          to: '/'
         },
         {
           title: 'IT 학생회',
           notification: 4,
-          to: ''
+          to: '/'
         },
         {
           title: '대나무숲',
           notification: 2,
-          to: ''
+          to: '/'
         }
       ]
     }
@@ -56,7 +62,7 @@ export default {
       v-for="(item, i) in menus"
       :class="{
         'nav__item': true,
-        'nav__item-current': i === current
+        'nav__item-current': isCurrent(i)
       }"
       @click="push(i)"
     >
@@ -64,7 +70,7 @@ export default {
         v-if="item.notification"
         :class="{
           'nav__item__badge': true,
-          'nav__item__badge-current': i === current
+          'nav__item__badge-current': isCurrent(i)
         }"
       >
         <span class="nav__item__badge__text">
