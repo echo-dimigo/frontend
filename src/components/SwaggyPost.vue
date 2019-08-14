@@ -53,9 +53,6 @@ export default {
       <span class="post__reaction__comment">
         댓글 {{ post.comments.length }}개
       </span>
-      <span class="post__reaction__like">
-        좋아요 {{ post.likes.length }}개
-      </span>
     </div>
     <div class="post__add-comment">
       <echoos-input
