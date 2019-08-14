@@ -96,6 +96,7 @@ export default {
       height: 3.5rem;
       display: inline-block;
       background-size: cover;
+      background-repeat: no-repeat;
       border-radius: 50%;
       border: solid 1px rgba(21, 19, 19, 0.05);
       margin-right: 7px;
