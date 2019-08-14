@@ -3,13 +3,15 @@ import EchoHeader from '@/components/EchoHeader.vue'
 import SwaggyProfile from '@/components/SwaggyProfile.vue'
 import SwaggyNavigation from '@/components/SwaggyNavigation.vue'
 import SwaggyNotification from '@/components/SwaggyNotification.vue'
+import EchoFooter from '@/components/EchoFooter.vue'
 
 export default {
   name: 'App',
   components: { EchoHeader,
     SwaggyProfile,
     SwaggyNavigation,
-    SwaggyNotification }
+    SwaggyNotification,
+    EchoFooter }
 }
 </script>
 
@@ -32,6 +34,7 @@ export default {
         class="app__notification"
       />
     </div>
+    <echo-footer />
   </div>
 </template>
 
