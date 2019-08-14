@@ -1,6 +1,12 @@
 <script>
 export default {
-  name: 'SwaggyProfile'
+  name: 'SwaggyProfile',
+
+  methods: {
+    push (to) {
+      this.$router.push(to)
+    }
+  }
 }
 </script>
 
@@ -16,8 +22,11 @@ export default {
       </span>
     </div>
     <div class="profile__tool">
-      <i class="profile__tool__icon fas fa-pencil-alt" />
-      <i class="profile__tool__icon fas fa-cog" />
+      <i class="profile__tool__icon fas fa-pencil-alt"/>
+      <i
+        @click="push('/profile')"
+        class="profile__tool__icon fas fa-cog"
+      />
       <i class="profile__tool__icon fas fa-power-off" />
     </div>
   </div>
