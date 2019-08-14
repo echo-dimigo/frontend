@@ -21,6 +21,16 @@ export default {
       class="post__input"
       v-model="form.title"
     />
+    <echoos-big-input
+      placeholder="새 글 내용"
+      class="post__input"
+      v-model="form.content"
+    />
+    <echoos-button
+      class="post__button"
+    >
+      등록하기
+    </echoos-button>
   </div>
 </template>
 
@@ -32,5 +42,14 @@ export default {
   background-color: $white;
   border-radius: 6px;
   height: 100%;
+
+  &__input {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    float: right;
+  }
 }
 </style>
