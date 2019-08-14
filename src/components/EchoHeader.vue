@@ -13,15 +13,17 @@ export default {
 
 <template>
 <header class="header">
-  <div class="header__brand">
-    <img
-      class="header__brand__logo"
-      :src="Brand"
-    >
-    <span class="header__brand__name">
-      ECHO
-    </span>
-  </div>
+  <router-link to="/">
+    <div class="header__brand">
+      <img
+        class="header__brand__logo"
+        :src="Brand"
+      >
+      <span class="header__brand__name">
+        ECHO
+      </span>
+    </div>
+  </router-link>
   <div class="header__search">
     <echoos-input
       class="header__search__input"
@@ -34,6 +36,10 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/colors.scss';
 @import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
+
+a {
+  text-decoration: none;
+}
 
 .header {
   height: 4.5rem;
