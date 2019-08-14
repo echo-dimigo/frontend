@@ -30,7 +30,7 @@ export default {
       @click="toggleExpand"
     >
       <h3 class="noti__header__title">
-        <i class="noti__icon fas fa-bell" />알림 모음
+        <i class="noti__icon icon-notice" />알림 모음
         ({{ noties.length }})
       </h3>
       <div class="noti__header__expand">

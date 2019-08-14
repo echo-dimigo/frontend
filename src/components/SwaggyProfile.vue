@@ -22,12 +22,12 @@ export default {
       </span>
     </div>
     <div class="profile__tool">
-      <i class="profile__tool__icon fas fa-pencil-alt"/>
+      <i class="profile__tool__icon icon-edit"/>
       <i
         @click="push('/profile')"
-        class="profile__tool__icon fas fa-cog"
+        class="profile__tool__icon icon-setting"
       />
-      <i class="profile__tool__icon fas fa-power-off" />
+      <i class="profile__tool__icon icon-logout" />
     </div>
   </div>
 </template>

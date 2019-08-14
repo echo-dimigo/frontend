@@ -7,6 +7,7 @@ import store from './store'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
+import 'dimigoincon'
 
 Vue.config.productionTip = false
 
