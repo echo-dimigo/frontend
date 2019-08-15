@@ -46,5 +46,13 @@ export default new Vuex.Store({
     logout (state) {
       state.commit('logout')
     }
+  },
+  getters: {
+    user (state) {
+      return state.userInfo
+    },
+    isAuth (state) {
+      return state.isAuth
+    }
   }
 })
