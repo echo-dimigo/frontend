@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import service from '@/api/service'
 import axios from 'axios'
+import jwtDecode from 'jwt-decode'
 
 Vue.use(Vuex)
 
@@ -24,7 +25,9 @@ export default new Vuex.Store({
       state.accessToken = accessToken
       localStorage.setItem('accessToken', accessToken)
       axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
-      state.userInfo = (await service.getUserInfo())
+
+      const decoded = jwtDecode(accessToken)
+      state.userInfo = decoded.identity[0]
     },
 
     logout (state) {
