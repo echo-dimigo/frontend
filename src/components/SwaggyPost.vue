@@ -209,6 +209,7 @@ export default {
 
     &__content {
       margin-left: 7px;
+      flex: 1;
     }
 
     &__info {
@@ -229,13 +230,9 @@ export default {
     justify-content: space-between;
 
     &__input {
-      width: 55%;
+      flex: 1;
       margin-right: 5px;
       display: inline-block;
-    }
-
-    &__button {
-      width: 35%;
     }
   }
 }
