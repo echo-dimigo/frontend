@@ -59,7 +59,7 @@ export default {
   background-color: $gray;
 
   height: 2rem;
-  padding: 0 1rem;
+  padding: 0.2em 1em;
 
   outline: none;
 }
