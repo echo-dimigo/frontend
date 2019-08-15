@@ -1,5 +1,6 @@
 <script>
 import { format } from 'date-fns'
+import service from '@/api/service'
 
 export default {
   name: 'SwaggyPost',
@@ -12,8 +13,27 @@ export default {
   },
 
   methods: {
+    async refresh () {
+      this.post = await service.getPostById(this.post.idx)
+    },
+
     toggleComment () {
       this.showComments = !this.showComments
+    },
+
+    initForm () {
+      this.commentForm = {
+        postIdx: this.post.idx,
+        targetType: 'post',
+        targetIdx: this.post.idx,
+        content: ''
+      }
+    },
+
+    async addComment () {
+      await service.addComment(this.commentForm)
+      await this.refresh()
+      this.initForm()
     }
   },
 
@@ -23,10 +43,15 @@ export default {
     }
   },
 
+  created () {
+    this.initForm()
+  },
+
   data () {
     return {
       comment: null,
-      showComments: false
+      showComments: false,
+      commentForm: {}
     }
   }
 }
@@ -91,11 +116,12 @@ export default {
     </div>
     <div class="post__add-comment">
       <echoos-input
-        v-model="comment"
+        v-model="commentForm.content"
         placeholder="댓글을 입력하세요"
         class="post__add-comment__input"
       />
       <echoos-button
+        @click="addComment"
         class="post__add-comment__button"
       >
         댓글 달기

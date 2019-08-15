@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Post, Tag } from './struct'
+import { Post, Tag, CreateComment } from './struct'
 
 const api = axios.create({
   baseURL: 'https://dev-api.dimigo.in',
@@ -30,5 +30,10 @@ export default {
   async getAllTag () {
     const { data: { tags } } = await api.get('/echo/tags')
     return tags.map(Tag)
+  },
+
+  async addComment (comment) {
+    comment = CreateComment(comment)
+    await api.post('/echo/comment', comment)
   }
 }
