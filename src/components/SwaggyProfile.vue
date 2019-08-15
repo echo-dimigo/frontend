@@ -1,6 +1,14 @@
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'SwaggyProfile',
+
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  },
 
   methods: {
     push (to) {
@@ -20,10 +28,11 @@ export default {
     <div class="profile__info__image" />
     <div class="profile__info">
       <span class="profile__info__name">
-        엄서훈
+        {{ user.name }}
       </span>
       <span class="profile__info__class">
-        1학년 5반
+        {{ user.grade }}학년
+        {{ user.klass }}반
       </span>
     </div>
     <div class="profile__tool">
