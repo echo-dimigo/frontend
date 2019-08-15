@@ -265,8 +265,7 @@ export default {
       display: inline-block;
 
       @media (max-width: 900px) {
-        flex: unset;
-        width: 60%;
+        width: 50%;
       }
     }
   }
