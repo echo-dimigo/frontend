@@ -263,6 +263,11 @@ export default {
       flex: 1;
       margin-right: 5px;
       display: inline-block;
+
+      @media (max-width: 900px) {
+        flex: unset;
+        width: 60%;
+      }
     }
   }
 }
