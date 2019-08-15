@@ -13,7 +13,14 @@ export default {
   computed: {
     ...mapGetters([
       'isAuth'
-    ])
+    ]),
+    isPost () {
+      const path = this.$route.path
+
+      return path === '/' ||
+        path.includes('/post') ||
+        path.includes('/page')
+    }
   }
 }
 </script>
@@ -26,7 +33,7 @@ export default {
         class="container__left__profile"
       />
       <swaggy-navigation
-        v-show="isAuth"
+        v-show="isAuth && isPost"
         class="container__left__navigation"
       />
     </div>
