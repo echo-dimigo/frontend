@@ -1,6 +1,13 @@
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'Profile'
+  name: 'Profile',
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  }
 }
 </script>
 
@@ -14,8 +21,8 @@ export default {
           class="profile__info__user__photo"
         />
         <span class="profile__info__user__text">
-          <span>이름 엄서훈</span>
-          <span>소속 1학년 5반</span>
+          <span>이름 {{ user.name }}</span>
+          <span>소속 {{ user.grade }}학년 {{ user.klass }}반</span>
         </span>
       </div>
 
