@@ -88,8 +88,6 @@ export default {
       height: 5rem;
       margin-bottom: 10px;
 
-      background-image: url('https://api.dimigo.hs.kr/user_photo/photo1_002108_uhmtoto_TffqRB.jpg');
-      background-size: cover;
       border: 2px solid $gray;
       border-radius: 50%;
     }

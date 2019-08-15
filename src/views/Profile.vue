@@ -12,9 +12,6 @@ export default {
       <div class="profile__info__user">
         <div
           class="profile__info__user__photo"
-          :style="{
-            'background-image': `url('https://api.dimigo.hs.kr/user_photo/photo1_002108_uhmtoto_TffqRB.jpg')`
-          }"
         />
         <span class="profile__info__user__text">
           <span>이름 엄서훈</span>
@@ -69,8 +66,6 @@ export default {
         width: 5rem;
         height: 5rem;
         display: inline-block;
-        background-size: cover;
-        background-repeat: no-repeat;
         border-radius: 50%;
         border: solid 1px rgba(21, 19, 19, 0.05);
         margin-right: 7px;

@@ -78,12 +78,7 @@ export default {
 <template>
   <article class="post">
     <div class="post__info">
-      <div
-        class="post__info__image"
-        :style="{
-          'background-image': `url('${post.writer.image}')`
-        }"
-      />
+      <div class="post__info__image" />
       <div class="post__info__text">
         <span class="post__info__name">
           {{ post.writer.name }}
@@ -223,9 +218,6 @@ export default {
     &__photo {
       width: 3rem;
       height: 3rem;
-
-      background-image: url('https://api.dimigo.hs.kr/user_photo/photo1_002108_uhmtoto_TffqRB.jpg');
-      background-size: cover;
       border: 2px solid $gray;
       border-radius: 50%;
     }
