@@ -51,29 +51,31 @@ export default {
 
 <template>
   <nav class="nav">
-    <div
-      :key="`item-${i}`"
-      v-for="(item, i) in [...menus, ...tags]"
-      :class="{
-        'nav__item': true,
-        'nav__item-current': isCurrent(item)
-      }"
-      @click="push(item)"
-    >
+    <div class="nav__item__box">
       <div
-        v-if="item.notification"
+        :key="`item-${i}`"
+        v-for="(item, i) in [...menus, ...tags]"
         :class="{
-          'nav__item__badge': true,
-          'nav__item__badge-current': isCurrent(item)
+          'nav__item': true,
+          'nav__item-current': isCurrent(item)
         }"
+        @click="push(item)"
       >
-        <span class="nav__item__badge__text">
-          {{ item.notification }}
+        <div
+          v-if="item.notification"
+          :class="{
+            'nav__item__badge': true,
+            'nav__item__badge-current': isCurrent(item)
+          }"
+        >
+          <span class="nav__item__badge__text">
+            {{ item.notification }}
+          </span>
+        </div>
+        <span class="nav__item__title">
+          {{ item.name }}
         </span>
       </div>
-      <span class="nav__item__title">
-        {{ item.name }}
-      </span>
     </div>
     <div
       @click="push('/page/all')"
@@ -106,6 +108,10 @@ export default {
       border-bottom-right-radius: 25px;
 
       color: $white;
+    }
+
+    &__box {
+      padding-bottom: 16px;
     }
 
     &__title {
