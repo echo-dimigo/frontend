@@ -210,7 +210,7 @@ export default {
   }
 
   &__comment {
-    padding: 13px 20px;
+    padding: 13px 10px;
     display: flex;
     align-items: center;
     border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
