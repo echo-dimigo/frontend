@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
@@ -58,9 +59,9 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.needAuth && !localStorage.accessToken) {
+  if (to.meta.needAuth && !store.state.isAuth) {
     next('/auth/login')
-  } else if (to.meta.forbidAuth && localStorage.accessToken) {
+  } else if (to.meta.forbidAuth && store.state.isAuth) {
     next('/')
   } else {
     if (to.meta.title) {
