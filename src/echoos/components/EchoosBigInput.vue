@@ -50,6 +50,7 @@ export default {
 .input {
   border: 0;
   border-radius: 15px;
+  line-height: 23px;
 
   background-color: $gray;
 
