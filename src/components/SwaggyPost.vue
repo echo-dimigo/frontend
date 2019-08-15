@@ -63,6 +63,9 @@ export default {
 
   created () {
     this.initForm()
+    setInterval(() => {
+      this.refresh()
+    }, 10000)
   },
 
   data () {
@@ -242,6 +245,7 @@ export default {
 
     &__tool {
       float: right;
+      margin-right: 6px;
       color: $dark-gray;
     }
   }
