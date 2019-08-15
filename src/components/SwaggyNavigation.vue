@@ -1,53 +1,47 @@
 <script>
+import service from '@/api/service'
+
 export default {
   name: 'SwaggyNavigation',
 
   methods: {
-    push (val) {
-      this.current = val
-      this.$router.push(this.menus[val].to)
+    push (item) {
+      this.$router.push(item.to)
     },
 
-    isCurrent (val) {
+    isCurrent (item) {
       const path = this.$route.path
-
-      return path === '/' && val === this.current
+      return item.to === path
     }
+  },
+
+  async created () {
+    this.tags = await service.getAllTag()
+    this.tags = this.tags.map(v => {
+      v.notification = 0 // 나중에 알림 API 생기면 수정
+      v.to = `/page/${v.idx}`
+      return v
+    })
   },
 
   data () {
     return {
-      current: 0,
+      tags: [],
       menus: [
         {
-          title: '구독 페이지 전체',
-          notification: 2,
-          to: '/'
-        },
-        {
-          title: '페이지 전체',
+          name: '구독 페이지 전체',
           notification: 0,
-          to: '/'
+          to: '/page/subscribed'
         },
         {
-          title: '클립한 글',
+          name: '페이지 전체',
           notification: 0,
-          to: '/'
+          to: '/page/all'
         },
         {
-          title: 'JnJ 일반 동아리',
-          notification: 10,
-          to: '/'
-        },
-        {
-          title: 'IT 학생회',
-          notification: 4,
-          to: '/'
-        },
-        {
-          title: '대나무숲',
-          notification: 2,
-          to: '/'
+          name: '클립한 글',
+          notification: 0,
+          to: '/post/cliped'
         }
       ]
     }
@@ -59,18 +53,18 @@ export default {
   <nav class="nav">
     <div
       :key="`item-${i}`"
-      v-for="(item, i) in menus"
+      v-for="(item, i) in [...menus, ...tags]"
       :class="{
         'nav__item': true,
-        'nav__item-current': isCurrent(i)
+        'nav__item-current': isCurrent(item)
       }"
-      @click="push(i)"
+      @click="push(item)"
     >
       <div
         v-if="item.notification"
         :class="{
           'nav__item__badge': true,
-          'nav__item__badge-current': isCurrent(i)
+          'nav__item__badge-current': isCurrent(item)
         }"
       >
         <span class="nav__item__badge__text">
@@ -78,7 +72,7 @@ export default {
         </span>
       </div>
       <span class="nav__item__title">
-        {{ item.title }}
+        {{ item.name }}
       </span>
     </div>
     <div
