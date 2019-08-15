@@ -1,33 +1,72 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        needAuth: true
+      }
+    },
+    {
+      path: '/auth/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        title: '로그인',
+        forbidAuth: true
+      }
     },
     {
       path: '/profile',
       name: 'profile',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue')
+      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+      meta: {
+        title: '프로필 관리',
+        needAuth: true
+      }
     },
     {
       path: '/post/new',
       name: 'addPost',
-      component: AddPost
+      component: AddPost,
+      meta: {
+        title: '새 글 등록',
+        needAuth: true
+      }
     },
     {
       path: '*',
       name: 'notFound',
-      component: () => import(/* webpackChunkName: "notFound" */ './views/NotFound.vue')
+      component: () => import(/* webpackChunkName: "notFound" */ './views/NotFound.vue'),
+      meta: {
+        title: 'Not Found'
+      }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.needAuth && !localStorage.token) {
+    next('/auth/login')
+  } else if (to.meta.forbidAuth && localStorage.token) {
+    next(from)
+  } else {
+    if (to.meta.title) {
+      document.title = `에코 - ${to.meta.title}`
+    }
+    next()
+  }
+})
+
+export default router
