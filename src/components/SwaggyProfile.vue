@@ -25,7 +25,11 @@ export default {
 
 <template>
   <div class="profile">
-    <div class="profile__info__image" />
+    <div class="profile__info__image"
+      :style="{
+        'background-image': `url('https://api.dimigo.hs.kr/user_photo/${user.photo}')`
+      }"
+    />
     <div class="profile__info">
       <span class="profile__info__name">
         {{ user.name }}
@@ -90,6 +94,9 @@ export default {
 
       border: 2px solid $gray;
       border-radius: 50%;
+
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
 
