@@ -14,6 +14,9 @@ Vue.config.productionTip = false
 axios.defaults.baseURL = 'https://dev-api.dimigo.in'
 
 Vue.use(Echoos)
+if (localStorage.accessToken) {
+  store.commit('login', localStorage.accessToken)
+}
 
 Ripple.zIndex = 55
 Vue.directive('ripple', Ripple)
