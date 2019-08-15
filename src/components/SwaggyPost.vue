@@ -52,6 +52,7 @@ export default {
       await service.addComment(this.commentForm)
       await this.refresh()
       this.initForm()
+      this.showComments = true
     }
   },
 
