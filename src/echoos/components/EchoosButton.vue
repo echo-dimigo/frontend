@@ -31,8 +31,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import '../../scss/colors.scss';
+
 .button {
-  @import '../../scss/colors.scss';
+
+  display: inline-block;
 
   border: 0;
   border-radius: 30px;
@@ -42,7 +45,7 @@ export default {
 
   transition: 0.5s background-color ease;
 
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
 
   outline: none;
 
