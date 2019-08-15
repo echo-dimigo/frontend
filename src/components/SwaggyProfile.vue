@@ -5,6 +5,11 @@ export default {
   methods: {
     push (to) {
       this.$router.push(to)
+    },
+
+    logout () {
+      localStorage.removeItem('token')
+      this.push('/auth/login')
     }
   }
 }
@@ -30,7 +35,10 @@ export default {
         @click="push('/profile')"
         class="profile__tool__icon icon-setting"
       />
-      <i class="profile__tool__icon icon-logout" />
+      <i
+        @click="logout"
+        class="profile__tool__icon icon-logout"
+      />
     </div>
   </div>
 </template>
