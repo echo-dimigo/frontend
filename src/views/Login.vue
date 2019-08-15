@@ -5,7 +5,9 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('login', this.form)
-      this.$router.push('/')
+      setInterval(() => {
+        this.$router.push('/')
+      }, 1000)
     }
   },
 
