@@ -65,7 +65,7 @@ router.beforeEach((to, from, next) => {
     next('/')
   } else {
     if (to.meta.title) {
-      document.title = `에코 - ${to.meta.title}`
+      document.title = `ECHO - ${to.meta.title}`
     }
     next()
   }
