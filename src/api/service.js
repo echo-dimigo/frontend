@@ -35,5 +35,9 @@ export default {
   async addComment (comment) {
     comment = CreateComment(comment)
     await api.post('/echo/comment', comment)
+  },
+
+  async deleteComment (idx) {
+    await api.delete(`/echo/comment/${idx}`)
   }
 }

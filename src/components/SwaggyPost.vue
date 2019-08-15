@@ -21,6 +21,11 @@ export default {
       this.showComments = !this.showComments
     },
 
+    async deleteComment (idx) {
+      await service.deleteComment(idx)
+      await this.refresh()
+    },
+
     initForm () {
       this.commentForm = {
         postIdx: this.post.idx,
@@ -107,6 +112,10 @@ export default {
             <span class="post__comment__info__date">
               {{ comment.wroteDate | formatDate }}
             </span>
+            <span
+              @click="deleteComment(comment.idx)"
+              class="post__comment__tool icon-delete"
+            />
           </div>
           <span class="post__comment__info__date">
             {{ comment.content }}
@@ -213,6 +222,8 @@ export default {
     }
 
     &__info {
+      line-height: 30px;
+
       &__writer {
         font-size: 1.1rem;
       }
@@ -221,6 +232,11 @@ export default {
         color: $dark-gray;
         font-size: 0.8rem;
       }
+    }
+
+    &__tool {
+      float: right;
+      color: $dark-gray;
     }
   }
 
