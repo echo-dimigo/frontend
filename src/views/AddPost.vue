@@ -1,6 +1,20 @@
 <script>
+import service from '@/api/service'
+
 export default {
   name: 'AddPost',
+
+  async created () {
+    this.tags = await service.getAllTag()
+  },
+
+  methods: {
+    async addPost () {
+      await service.addPost(this.form)
+      this.$router.push('/')
+    }
+  },
+
   data () {
     return {
       form: {
@@ -23,10 +37,14 @@ export default {
     />
     <echoos-big-input
       placeholder="새 글 내용"
-      class="post__input"
+      class="post__input post__input-large"
       v-model="form.content"
     />
+    <span class="post__input">
+      태그 기능은 준비 중입니다.
+    </span>
     <echoos-button
+      @click="addPost"
       class="post__button"
     >
       등록하기
@@ -46,6 +64,11 @@ export default {
   &__input {
     display: block;
     margin-bottom: 20px;
+
+    &-large {
+      width: 85%;
+      height: 300px;
+    }
   }
 
   &__button {

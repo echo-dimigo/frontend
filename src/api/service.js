@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Post, Tag, CreateComment } from './struct'
+import { Post, Tag, CreateComment, CreatePost } from './struct'
 
 export default {
   async Login (form) {
@@ -34,5 +34,10 @@ export default {
 
   async deleteComment (idx) {
     await axios.delete(`/echo/comment/${idx}`)
+  },
+
+  async addPost (post) {
+    post = CreatePost(post)
+    await axios.post('/echo/post', post)
   }
 }

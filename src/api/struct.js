@@ -1,5 +1,10 @@
 import { toDate } from 'unix-timestamp'
 
+const CreateTagOption = tag => ({
+  'tag_idx': tag.tagIdx,
+  'option': tag.option
+})
+
 export const Post = post => ({
   idx: post['idx'],
   title: post['title'],
@@ -8,6 +13,12 @@ export const Post = post => ({
   tags: post['post_tags'],
   comments: post['comments'].map(Comment),
   writer: post['writer']
+})
+
+export const CreatePost = post => ({
+  'title': post.title,
+  'content': post.content,
+  'tags': post.tags.map(CreateTagOption)
 })
 
 export const Tag = tag => ({
