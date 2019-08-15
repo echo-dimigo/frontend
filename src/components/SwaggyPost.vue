@@ -11,6 +11,12 @@ export default {
     }
   },
 
+  methods: {
+    toggleComment () {
+      this.showComments = !this.showComments
+    }
+  },
+
   filters: {
     formatDate (val) {
       return format(val, 'M월 D일 h시 m분')
@@ -19,7 +25,8 @@ export default {
 
   data () {
     return {
-      comment: null
+      comment: null,
+      showComments: false
     }
   }
 }
@@ -49,10 +56,38 @@ export default {
       </span>
       {{ post.content }}
     </div>
-    <div class="post__reaction">
+    <div
+      @click="toggleComment"
+      class="post__reaction"
+    >
       <span class="post__reaction__comment">
         댓글 {{ post.comments.length }}개
       </span>
+    </div>
+    <div
+      v-show="showComments"
+      class="post__comment__list"
+    >
+      <div
+        :key="`comment-${i}`"
+        v-for="(comment, i) in post.comments"
+        class="post__comment"
+      >
+        <div class="post__comment__photo" />
+        <div class="post__comment__content">
+          <div class="post__comment__info">
+            <span class="post__comment__info__writer">
+              {{ comment.writer.name }}
+            </span>
+            <span class="post__comment__info__date">
+              {{ comment.wroteDate | formatDate }}
+            </span>
+          </div>
+          <span class="post__comment__info__date">
+            {{ comment.content }}
+          </span>
+        </div>
+      </div>
     </div>
     <div class="post__add-comment">
       <echoos-input
@@ -121,17 +156,44 @@ export default {
   &__reaction {
     width: 100%;
     height: 2rem;
-
+    user-select: none;
     border-bottom: solid 2px rgba(21, 19, 19, 0.05);
 
-    &__comment,
-    &__like {
+    &__comment {
       float: right;
       color: $dark-gray;
     }
+  }
 
-    &__like {
-      margin-right: 8px;
+  &__comment {
+    padding: 13px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
+
+    &__photo {
+      width: 3rem;
+      height: 3rem;
+
+      background-image: url('https://api.dimigo.hs.kr/user_photo/photo1_002108_uhmtoto_TffqRB.jpg');
+      background-size: cover;
+      border: 2px solid $gray;
+      border-radius: 50%;
+    }
+
+    &__content {
+      margin-left: 7px;
+    }
+
+    &__info {
+      &__writer {
+        font-size: 1.1rem;
+      }
+
+      &__date {
+        color: $dark-gray;
+        font-size: 0.8rem;
+      }
     }
   }
 
