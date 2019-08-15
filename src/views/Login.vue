@@ -28,11 +28,13 @@ export default {
     <div class="login__form">
       <echoos-input
         placeholder="아이디를 입력하세요"
+        @enter="login"
         class="login__form__input"
         v-model="form.id"
       />
       <echoos-input
         placeholder="비밀번호를 입력하세요"
+        @enter="login"
         type="password"
         class="login__form__input"
         v-model="form.password"
