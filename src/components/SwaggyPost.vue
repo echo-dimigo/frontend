@@ -229,9 +229,13 @@ export default {
     justify-content: space-between;
 
     &__input {
-      flex: 1;
+      width: 55%;
       margin-right: 5px;
       display: inline-block;
+    }
+
+    &__button {
+      width: 35%;
     }
   }
 }
