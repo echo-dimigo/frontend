@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
@@ -57,10 +58,10 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.needAuth && !localStorage.token) {
+  if (to.meta.needAuth && !localStorage.accessToken) {
     next('/auth/login')
-  } else if (to.meta.forbidAuth && localStorage.token) {
-    next(from)
+  } else if (to.meta.forbidAuth && localStorage.accessToken) {
+    next('/')
   } else {
     if (to.meta.title) {
       document.title = `에코 - ${to.meta.title}`
