@@ -28,3 +28,10 @@ export const Comment = comment => ({
   writer: comment['writer'],
   wroteDate: toDate(comment['wrote_date'])
 })
+
+export const CreateComment = comment => ({
+  'post_idx': comment.postIdx,
+  'target_type': comment.targetType,
+  'target_idx': comment.targetIdx,
+  'content': comment.content
+})
