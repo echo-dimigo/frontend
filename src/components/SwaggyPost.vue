@@ -1,6 +1,9 @@
 <script>
 import { format } from 'date-fns'
+import locale from 'date-fns/locale/ko'
+
 import service from '@/api/service'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'SwaggyPost',
@@ -10,6 +13,12 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
   },
 
   methods: {
@@ -24,6 +33,10 @@ export default {
     async deleteComment (idx) {
       await service.deleteComment(idx)
       await this.refresh()
+    },
+
+    isMyComment (comment) {
+      return comment.writer.idx === this.user.idx
     },
 
     initForm () {
@@ -44,7 +57,7 @@ export default {
 
   filters: {
     formatDate (val) {
-      return format(val, 'M월 D일 h시 m분')
+      return format(val, 'M월 D일 a h시 m분', { locale })
     }
   },
 
@@ -113,6 +126,7 @@ export default {
               {{ comment.wroteDate | formatDate }}
             </span>
             <span
+              v-if="isMyComment(comment)"
               @click="deleteComment(comment.idx)"
               class="post__comment__tool icon-delete"
             />
