@@ -19,6 +19,9 @@ export default {
       <div class="profile__info__user">
         <div
           class="profile__info__user__photo"
+          :style="{
+            'background-image': `url('https://api.dimigo.hs.kr/user_photo/${user.photo}')`
+          }"
         />
         <span class="profile__info__user__text">
           <span>이름 {{ user.name }}</span>
@@ -76,6 +79,8 @@ export default {
         border-radius: 50%;
         border: solid 1px rgba(21, 19, 19, 0.05);
         margin-right: 7px;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
     }
 
