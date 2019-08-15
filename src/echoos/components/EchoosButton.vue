@@ -39,7 +39,6 @@ export default {
 
   background-color: $brand;
   color: white;
-  cursor: pointer;
 
   transition: 0.5s background-color ease;
 
