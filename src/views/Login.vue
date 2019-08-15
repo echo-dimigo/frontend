@@ -1,15 +1,11 @@
 <script>
-import service from '@/api/service'
-
 export default {
   name: 'Login',
 
   methods: {
     login () {
-      service.Login(this.form)
-        .then(() => {
-          this.$router.push('/')
-        })
+      this.$store.dispatch('login', this.form)
+      this.$router.push('/')
     }
   },
 

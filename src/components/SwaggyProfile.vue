@@ -8,7 +8,7 @@ export default {
     },
 
     logout () {
-      localStorage.removeItem('token')
+      this.$store.dispatch('logout')
       this.push('/auth/login')
     }
   }
