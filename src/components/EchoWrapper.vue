@@ -68,13 +68,11 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-around;
   padding: 20px;
 
   &__left {
     width: 230px;
-    align-self: flex-start;
 
     @media (max-width: 900px) {
       width: 100%;
@@ -90,7 +88,6 @@ export default {
     width: 230px;
     height: 100%;
     margin-bottom: 15px;
-    align-self: flex-start;
 
     @media (max-width: 900px) {
       width: 100%;

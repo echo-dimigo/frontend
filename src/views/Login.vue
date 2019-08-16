@@ -52,6 +52,7 @@ export default {
 @import '../scss/colors.scss';
 
 .login {
+  align-self: center;
   padding: 20px;
   background-color: $white;
   border-radius: 6px;
