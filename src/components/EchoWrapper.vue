@@ -55,7 +55,7 @@ export default {
   padding: 20px;
 
   &__left {
-    width: 220px;
+    width: 230px;
 
     @media (max-width: 900px) {
       width: 100%;
@@ -68,7 +68,7 @@ export default {
   }
 
   &__right {
-    width: 250px;
+    width: 230px;
     height: 100%;
     margin-bottom: 15px;
 
