@@ -5,6 +5,11 @@ const CreateTagOption = tag => ({
   'option': tag.option
 })
 
+export const Token = tokens => ({
+  accessToken: tokens['token'],
+  refreshToken: tokens['refresh_token']
+})
+
 export const Post = post => ({
   idx: post['idx'],
   title: post['title'],
