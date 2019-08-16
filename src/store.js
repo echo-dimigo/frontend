@@ -50,6 +50,11 @@ export default new Vuex.Store({
 
     logout (state) {
       state.commit('logout')
+    },
+
+    async refreshAccessToken (state, refreshToken) {
+      const refreshedToken = await service.refreshAccessToken(refreshToken)
+      this.commit(refreshedToken)
     }
   },
   getters: {

@@ -7,6 +7,16 @@ export default {
     return tokens
   },
 
+  async refreshAccessToken (refreshToken) {
+    const { data: { token: accessToken } } =
+      await axios.post('/auth/token/refresh', {
+        headers: {
+          Authorization: refreshToken
+        }
+      })
+    return accessToken
+  },
+
   async getUserInfo () {
     const { data: userInfo } = await axios.get('/user/jwt')
     return userInfo
