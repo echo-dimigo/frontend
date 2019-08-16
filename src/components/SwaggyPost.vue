@@ -64,17 +64,22 @@ export default {
 
   created () {
     this.initForm()
-    setInterval(() => {
+    this.refresher = setInterval(() => {
       this.refresh()
-    }, 10000)
+    }, 1000)
   },
 
   data () {
     return {
+      refresher: () => {},
       comment: null,
       showComments: false,
       commentForm: {}
     }
+  },
+
+  destroyed () {
+    clearInterval(this.refresher)
   }
 }
 </script>
