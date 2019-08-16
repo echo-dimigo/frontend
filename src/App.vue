@@ -1,23 +1,17 @@
 <script>
-import EchoHeader from '@/components/EchoHeader.vue'
 import EchoWrapper from '@/components/EchoWrapper.vue'
-import EchoFooter from '@/components/EchoFooter.vue'
 
 export default {
   name: 'App',
-  components: { EchoHeader,
-    EchoWrapper,
-    EchoFooter }
+  components: { EchoWrapper }
 }
 </script>
 
 <template>
   <div id="app" class="app">
-    <echo-header />
     <echo-wrapper>
       <router-view class="app__content" />
     </echo-wrapper>
-    <echo-footer />
   </div>
 </template>
 
@@ -31,9 +25,6 @@ export default {
 }
 
 .app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background-color: $gray;
 
   &__content {

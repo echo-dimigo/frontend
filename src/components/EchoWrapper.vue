@@ -1,15 +1,20 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import EchoHeader from '@/components/EchoHeader.vue'
+import EchoFooter from '@/components/EchoFooter.vue'
 import SwaggyProfile from '@/components/SwaggyProfile.vue'
 import SwaggyNavigation from '@/components/SwaggyNavigation.vue'
 import SwaggyNotification from '@/components/SwaggyNotification.vue'
 
 export default {
   name: 'EchoWrapper',
-  components: { SwaggyProfile,
+  components: { EchoHeader,
+    SwaggyProfile,
     SwaggyNavigation,
-    SwaggyNotification },
+    SwaggyNotification,
+    EchoFooter
+  },
   computed: {
     ...mapGetters([
       'isAuth'
@@ -26,6 +31,8 @@ export default {
 </script>
 
 <template>
+  <div class="wrapper">
+  <echo-header />
   <div class="container">
     <div class="container__left">
       <swaggy-profile
@@ -45,9 +52,17 @@ export default {
       />
     </div>
   </div>
+  <echo-footer />
+  </div>
 </template>
 
 <style lang="scss">
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
   flex: 1;
 
