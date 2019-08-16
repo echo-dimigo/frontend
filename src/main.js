@@ -28,7 +28,7 @@ Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
 
 if (localStorage.accessToken) {
-  store.commit('login', localStorage.accessToken)
+  store.commit('login', localStorage)
 }
 
 Ripple.zIndex = 55

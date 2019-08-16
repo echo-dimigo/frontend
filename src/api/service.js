@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { Post, Tag, CreateComment, CreatePost } from './struct'
+import { Token, Post, Tag, CreateComment, CreatePost } from './struct'
 
 export default {
   async Login (form) {
     const { data: tokens } = await axios.post('/auth', form)
-    return tokens
+    return Token(tokens)
   },
 
   async refreshAccessToken (refreshToken) {
