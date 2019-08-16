@@ -54,7 +54,7 @@ export default new Vuex.Store({
 
     async refreshAccessToken (state, refreshToken) {
       const refreshedToken = await service.refreshAccessToken(refreshToken)
-      this.commit(refreshedToken)
+      state.commit('login', refreshedToken)
     }
   },
   getters: {

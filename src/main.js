@@ -14,11 +14,14 @@ import VueContentPlaceholders from 'vue-content-placeholders'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'https://dev-api.dimigo.in'
-axios.interceptors.response.use(async response => {
-  if (response.status === 401) {
-    await store.dispatch('refreshAccessToken', localStorage.refreshToken)
-  }
+axios.interceptors.response.use(response => {
   return response
+}, async error => {
+  if (error.response.status === 401) {
+    store.dispatch('refreshAccessToken', localStorage.refreshToken)
+  } else {
+    return Promise.reject(error)
+  }
 })
 
 Vue.use(VueContentPlaceholders)

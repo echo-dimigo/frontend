@@ -9,9 +9,9 @@ export default {
 
   async refreshAccessToken (refreshToken) {
     const { data: { token: accessToken } } =
-      await axios.post('/auth/token/refresh', {
+      await axios.post('/auth/token/refresh', {}, {
         headers: {
-          Authorization: refreshToken
+          Authorization: `Bearer ${refreshToken}`
         }
       })
     return accessToken
