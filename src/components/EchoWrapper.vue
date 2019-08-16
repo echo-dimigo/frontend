@@ -34,21 +34,24 @@ export default {
   <div class="wrapper">
   <echo-header />
   <div class="container">
-    <div class="container__left">
+    <div
+      v-if="isAuth"
+      class="container__left"
+    >
       <swaggy-profile
-        v-if="isAuth"
         class="container__left__profile"
       />
       <swaggy-navigation
-        v-if="isAuth"
         v-show="isPost"
         class="container__left__navigation"
       />
     </div>
     <slot />
-    <div class="container__right">
+    <div
+      v-if="isAuth"
+      class="container__right"
+    >
       <swaggy-notification
-        v-if="isAuth"
         class="container__right__notification"
       />
     </div>
