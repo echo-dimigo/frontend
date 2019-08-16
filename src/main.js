@@ -12,10 +12,18 @@ import 'dimigoincon'
 import VueContentPlaceholders from 'vue-content-placeholders'
 
 Vue.config.productionTip = false
+
 axios.defaults.baseURL = 'https://dev-api.dimigo.in'
+axios.interceptors.response.use(async response => {
+  if (response.status === 401) {
+    await store.dispatch('refreshAccessToken', localStorage.refreshToken)
+  }
+  return response
+})
 
 Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
+
 if (localStorage.accessToken) {
   store.commit('login', localStorage.accessToken)
 }
