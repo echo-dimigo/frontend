@@ -4,7 +4,7 @@ import { Post, Tag, CreateComment, CreatePost } from './struct'
 export default {
   async Login (form) {
     const { data: tokens } = await axios.post('/auth', form)
-    return tokens.token
+    return tokens
   },
 
   async getUserInfo () {

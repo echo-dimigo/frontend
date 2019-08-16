@@ -39,11 +39,13 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login (state, form) {
-      service.Login(form)
-        .then(accessToken => {
-          state.commit('login', accessToken)
-        })
+    async login (state, form) {
+      const tokens = await service.Login(form)
+      if (tokens.token) {
+        this.commit('login', tokens.token)
+        return true
+      }
+      return false
     },
 
     logout (state) {

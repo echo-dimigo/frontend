@@ -17,6 +17,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
+        title: '홈',
         needAuth: true
       }
     },
@@ -30,20 +31,20 @@ const router = new Router({
       }
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
-      meta: {
-        title: '프로필 관리',
-        needAuth: true
-      }
-    },
-    {
       path: '/post/new',
       name: 'addPost',
       component: AddPost,
       meta: {
         title: '새 글 등록',
+        needAuth: true
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+      meta: {
+        title: '프로필 관리',
         needAuth: true
       }
     },
@@ -66,6 +67,8 @@ router.beforeEach((to, from, next) => {
   } else {
     if (to.meta.title) {
       document.title = `ECHO - ${to.meta.title}`
+    } else {
+      document.title = 'ECHO'
     }
     next()
   }

@@ -3,11 +3,13 @@ export default {
   name: 'Login',
 
   methods: {
-    login () {
-      this.$store.dispatch('login', this.form)
-      setInterval(() => {
+    async login () {
+      try {
+        await this.$store.dispatch('login', this.form)
         this.$router.push('/')
-      }, 1000)
+      } catch (e) {
+        alert('로그인을 실패했습니다.')
+      }
     }
   },
 
