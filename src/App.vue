@@ -32,6 +32,8 @@ export default {
 
 .app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: $gray;
 
   &__content {

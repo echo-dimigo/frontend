@@ -49,6 +49,8 @@ export default {
 
 <style lang="scss">
 .container {
+  flex: 1;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
