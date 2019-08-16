@@ -40,7 +40,8 @@ export default {
         class="container__left__profile"
       />
       <swaggy-navigation
-        v-if="isAuth && isPost"
+        v-if="isAuth"
+        v-show="isPost"
         class="container__left__navigation"
       />
     </div>
