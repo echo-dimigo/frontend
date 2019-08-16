@@ -20,13 +20,14 @@ export default new Vuex.Store({
     accessToken: null
   },
   mutations: {
-    async login (state, accessToken) {
+    async login (state, tokens) {
       state.isAuth = true
-      state.accessToken = accessToken
-      localStorage.setItem('accessToken', accessToken)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+      state.accessToken = tokens.token
+      localStorage.setItem('accessToken', tokens.token)
+      localStorage.setItem('refreshToken', tokens.refresh_token)
+      axios.defaults.headers.common['Authorization'] = `Bearer ${tokens.token}`
 
-      const decoded = jwtDecode(accessToken)
+      const decoded = jwtDecode(tokens.token)
       state.userInfo = decoded.identity[0]
     },
 
@@ -34,6 +35,7 @@ export default new Vuex.Store({
       state.isAuth = false
       state.accessToken = null
       localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
       axios.defaults.headers.common['Authorization'] = null
       state.userInfo = {}
     }
@@ -42,7 +44,7 @@ export default new Vuex.Store({
     async login (state, form) {
       const tokens = await service.Login(form)
       if (tokens.token) {
-        this.commit('login', tokens.token)
+        this.commit('login', tokens)
         return true
       }
       return false
