@@ -16,6 +16,7 @@
     "register-service-worker": "^1.6.2",
     "unix-timestamp": "^0.2.0",
     "vue": "^2.6.10",
+    "vue-content-placeholders": "^0.2.1",
     "vue-ripple-directive": "^2.0.1",
     "vue-router": "^3.0.3",
     "vue-swal": "^1.0.0",
