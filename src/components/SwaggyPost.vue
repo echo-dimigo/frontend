@@ -66,7 +66,7 @@ export default {
     this.initForm()
     this.refresher = setInterval(() => {
       this.refresh()
-    }, 1000)
+    }, 10000)
   },
 
   data () {
