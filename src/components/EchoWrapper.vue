@@ -36,18 +36,18 @@ export default {
   <div class="container">
     <div class="container__left">
       <swaggy-profile
-        v-show="isAuth"
+        v-if="isAuth"
         class="container__left__profile"
       />
       <swaggy-navigation
-        v-show="isAuth && isPost"
+        v-if="isAuth && isPost"
         class="container__left__navigation"
       />
     </div>
     <slot />
     <div class="container__right">
       <swaggy-notification
-        v-show="isAuth"
+        v-if="isAuth"
         class="container__right__notification"
       />
     </div>
