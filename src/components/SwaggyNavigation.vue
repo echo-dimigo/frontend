@@ -16,17 +16,22 @@ export default {
   },
 
   async created () {
+    this.loading = true
+
     this.tags = await service.getAllTag()
     this.tags = this.tags.map(v => {
       v.notification = 0 // 나중에 알림 API 생기면 수정
       v.to = `/page/${v.idx}`
       return v
     })
+
+    this.loading = false
   },
 
   data () {
     return {
       tags: [],
+      loading: false,
       menus: [
         {
           name: '구독 페이지 전체',
@@ -76,6 +81,12 @@ export default {
           {{ item.name }}
         </span>
       </div>
+      <content-placeholders
+        v-if="loading"
+        class="nav__item"
+      >
+        <content-placeholders-text :lines="5" />
+      </content-placeholders>
     </div>
     <div
       @click="push('/page/all')"

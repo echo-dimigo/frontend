@@ -20,7 +20,7 @@ export default {
     this.loading = true
     this.posts = await service.getBriefPosts()
 
-    Promise.all(this.posts.map(async v => {
+    Promise.all(this.posts.map(v => {
       return service.getPostById(v.idx)
     })).then(posts => {
       this.posts = posts
@@ -32,21 +32,24 @@ export default {
 
 <template>
   <div class="home">
-    <div
-      v-if="loading"
-      class="home__loader"
-    >
-      <echoos-loader
-        class="home__loader__circle"
+    <template v-if="loading">
+      <content-placeholders
+        :key="`placeholder-${i}`"
+        v-for="(_, i) in 10"
+        class="home__post__placeholder"
+      >
+        <content-placeholders-heading :img="true" />
+        <content-placeholders-text :lines="5" />
+      </content-placeholders>
+    </template>
+    <template v-else>
+      <swaggy-post
+        :key="`post-${i}`"
+        v-for="(post, i) in posts"
+        class="home__post"
+        :post="post"
       />
-    </div>
-    <swaggy-post
-      v-else
-      :key="`post-${i}`"
-      v-for="(post, i) in posts"
-      class="home__post"
-      :post="post"
-    />
+    </template>
   </div>
 </template>
 
@@ -60,6 +63,12 @@ export default {
   }
 
   &__post {
+    &__placeholder {
+      &:not(:last-child) {
+        margin-bottom: 50px;
+      }
+    }
+
     &:not(:last-child) {
       margin-bottom: 15px;
     }

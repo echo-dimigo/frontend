@@ -9,10 +9,12 @@ import './registerServiceWorker'
 
 import Echoos from './echoos'
 import 'dimigoincon'
+import VueContentPlaceholders from 'vue-content-placeholders'
 
 Vue.config.productionTip = false
 axios.defaults.baseURL = 'https://dev-api.dimigo.in'
 
+Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
 if (localStorage.accessToken) {
   store.commit('login', localStorage.accessToken)
