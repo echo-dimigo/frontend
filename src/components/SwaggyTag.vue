@@ -29,7 +29,7 @@ export default {
       } if (option === 'request') {
         return '가입 신청하기'
       }
-      return '신청 불가'
+      return '가입 불가'
     },
 
     joinIcon () {
