@@ -226,6 +226,7 @@ export default {
     border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__photo {
+      align-self: flex-start;
       width: 3rem;
       height: 3rem;
       border: 2px solid $gray;
