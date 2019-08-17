@@ -59,19 +59,21 @@ export default {
         관리자 {{ tag.owner.name }}
       </span>
     </div>
-    <span class="tag__description">
+    <div class="tag__description">
       {{ tag.description }}
-    </span>
+    </div>
     <div
       :class="{
         'tag__join': true,
         'tag__join-private': joinOption === '비공개 태그'
       }"
     >
-      <span
-        :class="`icon-${joinIcon}`"
-      />
-      {{ joinMessage }}
+      <div class="tag__join__button">
+        <span
+          :class="`icon-${joinIcon}`"
+        />
+        {{ joinMessage }}
+      </div>
     </div>
   </div>
 </template>
@@ -102,9 +104,18 @@ export default {
     }
   }
 
+  &__description {
+    width: 100%;
+  }
+
   &__join {
-    float: right;
-    height: 100%;
+    margin: 0 auto;
+
+    &__button {
+      width: fit-content;
+      margin-top: 10px;
+      margin-left: auto;
+    }
 
     &-private {
       color: $red;
