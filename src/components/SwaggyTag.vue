@@ -104,6 +104,7 @@ export default {
 
   &__description {
     width: 100%;
+    line-height: 25px;
   }
 
   &__join {
