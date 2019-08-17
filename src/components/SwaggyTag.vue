@@ -65,15 +65,13 @@ export default {
     <div
       :class="{
         'tag__join': true,
-        'tag__join-private': joinOption === '비공개 태그'
+        'tag__join-private': tag.joinOption === 'private'
       }"
     >
-      <div class="tag__join__button">
-        <span
-          :class="`icon-${joinIcon}`"
-        />
-        {{ joinMessage }}
-      </div>
+      <span
+        :class="`icon-${joinIcon}`"
+      />
+      {{ joinMessage }}
     </div>
   </div>
 </template>
@@ -109,13 +107,9 @@ export default {
   }
 
   &__join {
-    margin: 0 auto;
-
-    &__button {
-      width: fit-content;
-      margin-top: 10px;
-      margin-left: auto;
-    }
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: auto;
 
     &-private {
       color: $red;
