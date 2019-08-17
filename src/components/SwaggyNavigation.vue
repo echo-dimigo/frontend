@@ -34,14 +34,14 @@ export default {
       loading: false,
       menus: [
         {
-          name: '구독 페이지 전체',
+          name: '구독 태그 전체',
           notification: 0,
-          to: '/page/subscribed'
+          to: '/tag/subscribed'
         },
         {
-          name: '페이지 전체',
+          name: '태그 전체',
           notification: 0,
-          to: '/page/all'
+          to: '/tag/all'
         },
         {
           name: '클립한 글',
@@ -93,7 +93,7 @@ export default {
       @click="push('/page/all')"
       class="nav__all-page"
     >
-      구독 페이지 전체 보기
+      구독 태그 전체 보기
     </div>
   </nav>
 </template>

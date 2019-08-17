@@ -19,12 +19,11 @@ export default {
     ...mapGetters([
       'isAuth'
     ]),
-    isPost () {
+    isTagRoute () {
       const path = this.$route.path
 
       return path === '/' ||
-        path.includes('/post') ||
-        path.includes('/page')
+        path.includes('/tag')
     }
   }
 }
@@ -42,7 +41,7 @@ export default {
         class="container__left__profile"
       />
       <swaggy-navigation
-        v-show="isPost"
+        v-show="isTagRoute"
         class="container__left__navigation"
       />
     </div>
