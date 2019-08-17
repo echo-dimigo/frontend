@@ -38,11 +38,10 @@ export default {
         ({{ noties.length }})
       </h3>
       <div class="noti__header__expand">
-        <i :class="{
+        <span :class="{
           'noti__header__expand__icon': true,
-          'fas': true,
-          'fa-caret-up': expand,
-          'fa-caret-down': !expand
+          'icon-arrow-up': expand,
+          'icon-arrow-down': !expand
         }" />
       </div>
     </div>
