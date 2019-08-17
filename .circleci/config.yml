@@ -39,7 +39,7 @@ jobs:
             command: npm run cypress:install
       - run:
             name: Cypress End-To-End Test
-            command: npm run test:e2e
+            command: npm run test:ci
 
 workflows:
   version: 2
