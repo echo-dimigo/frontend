@@ -1,8 +1,16 @@
 <script>
 import Brand from '@/assets/logo.png'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'EchoHeader',
+
+  computed: {
+    ...mapGetters(
+      ['isAuth']
+    )
+  },
+
   data () {
     return {
       Brand
@@ -26,6 +34,7 @@ export default {
   </router-link>
   <div class="header__search">
     <echoos-input
+      v-if="isAuth"
       class="header__search__input"
       placeholder="🔎 작성자, 게시물을 검색해보세요"
     />
