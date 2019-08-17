@@ -6,6 +6,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
 import Notification from './views/Notification.vue'
+import TagList from './views/TagList.vue'
 
 Vue.use(Router)
 
@@ -55,6 +56,15 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
       meta: {
         title: '프로필 관리',
+        needAuth: true
+      }
+    },
+    {
+      path: '/tag/all',
+      name: 'tagList',
+      component: TagList,
+      meta: {
+        title: '전체 태그 보기',
         needAuth: true
       }
     },
