@@ -4,7 +4,7 @@ import Ripple from 'vue-ripple-directive'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from 'axios'
+import axios from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
@@ -12,21 +12,7 @@ import 'dimigoincon'
 import VueContentPlaceholders from 'vue-content-placeholders'
 
 Vue.config.productionTip = false
-
-axios.defaults.baseURL = 'https://dev-api.dimigo.in'
-axios.interceptors.response.use(response => {
-  return response
-}, async error => {
-  if (error.response.status === 401) {
-    await store.dispatch('refreshAccessToken', localStorage.refreshToken)
-    error.config.headers = {
-      Authorization: `Bearer ${store.getters.accessToken}`
-    }
-    return axios.request(error.config)
-  } else {
-    return Promise.reject(error)
-  }
-})
+axios.Config()
 
 Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
