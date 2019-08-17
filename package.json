@@ -75,5 +75,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/echo-dimigo/echo-front.git"
   }
 }
