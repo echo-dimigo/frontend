@@ -3,10 +3,9 @@ import Brand from '@/assets/logo.png'
 
 export default {
   name: 'EchoHeader',
-  data () {
-    return {
-      Brand
-    }
+
+  computed: {
+    Brand
   }
 }
 </script>
