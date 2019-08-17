@@ -17,7 +17,6 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - .cache
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Build Project
@@ -26,7 +25,6 @@ jobs:
           root: ~/
           paths:
             - echo-front
-            - .cache
   
   test-e2e:
     docker:
@@ -36,6 +34,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
+      - run:
+            name: Install Cypress
+            command: npm run cypress:install
       - run:
             name: Cypress End-To-End Test
             command: npm run test:e2e
