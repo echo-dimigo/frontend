@@ -25,6 +25,7 @@ jobs:
           root: ~/
           paths:
             - echo-front
+            - .cache
   
   test-e2e:
     docker:
