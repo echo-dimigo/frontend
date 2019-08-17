@@ -101,7 +101,9 @@ export default {
       <span class="post__content__title">
         {{ post.title }}
       </span>
-      {{ post.content }}
+      <span class="post__content__text">
+        {{ post.content }}
+      </span>
     </div>
     <div
       @click="toggleComment"
@@ -204,6 +206,11 @@ export default {
       display: block;
       line-height: 40px;
       font-weight: bold;
+    }
+
+    &__text {
+      white-space: pre-line;
+      word-wrap: break-word;
     }
   }
 
