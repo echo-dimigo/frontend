@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-    working_directory: ~/repo
+    working_directory: ~/echo-front
 
     steps:
       - checkout
@@ -20,12 +20,12 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - repo
+            - echo-front
 
   test-e2e:
     docker:
       - image: cypress/base:10
-    working_directory: ~/repo
+    working_directory: ~/echo-front
 
     steps:
       - attach_workspace:
