@@ -25,9 +25,3 @@ jobs:
       - run:
         name: Build Project
         comamnd: npm run build
-
-workflows:
-  version: 2
-  build:
-    jobs:
-      - build
