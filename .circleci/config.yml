@@ -28,3 +28,12 @@ jobs:
     
     steps:
       - run: npm run test
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+  test:
+    jobs:
+      - test-e2e
