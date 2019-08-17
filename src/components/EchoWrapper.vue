@@ -32,31 +32,31 @@ export default {
 
 <template>
   <div class="wrapper">
-  <echo-header />
-  <div class="container">
-    <div
-      v-if="isAuth"
-      class="container__left"
-    >
-      <swaggy-profile
-        class="container__left__profile"
-      />
-      <swaggy-navigation
-        v-show="isTagRoute"
-        class="container__left__navigation"
-      />
+    <echo-header />
+    <div class="container">
+      <div
+        v-if="isAuth"
+        class="container__left"
+      >
+        <swaggy-profile
+          class="container__left__profile"
+        />
+        <swaggy-navigation
+          v-show="isTagRoute"
+          class="container__left__navigation"
+        />
+      </div>
+      <slot />
+      <div
+        v-if="isAuth"
+        class="container__right"
+      >
+        <swaggy-notification
+          class="container__right__notification"
+        />
+      </div>
     </div>
-    <slot />
-    <div
-      v-if="isAuth"
-      class="container__right"
-    >
-      <swaggy-notification
-        class="container__right__notification"
-      />
-    </div>
-  </div>
-  <echo-footer />
+    <echo-footer />
   </div>
 </template>
 
