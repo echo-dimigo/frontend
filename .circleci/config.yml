@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cypress/base:10
-    working_directory: ~/
+    working_directory: ~/echo-front
 
     steps:
       - checkout
@@ -24,7 +24,8 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - ~/
+            - echo-front
+            - .cache
   
   test-e2e:
     docker:
