@@ -40,9 +40,9 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  build-and-test:
     jobs:
       - build
-  test-e2e:
-    jobs:
-      - test-e2e
+      - test-e2e:
+          requires:
+            - build
