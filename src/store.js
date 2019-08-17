@@ -15,39 +15,39 @@ enhanceAccessToken()
 
 export default new Vuex.Store({
   state: {
-    isAuth: false,
     userInfo: {},
     accessToken: null
   },
   mutations: {
     async login (state, { accessToken, refreshToken }) {
-      state.isAuth = true
-      state.accessToken = accessToken
-      localStorage.setItem('accessToken', accessToken)
-      localStorage.setItem('refreshToken', refreshToken)
-      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
-
       const decoded = jwtDecode(accessToken)
       state.userInfo = decoded.identity[0]
+      state.accessToken = accessToken
+
+      localStorage.setItem('accessToken', accessToken)
+      localStorage.setItem('refreshToken', refreshToken)
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
     },
 
     logout (state) {
-      state.isAuth = false
+      state.userInfo = {}
       state.accessToken = null
+
       localStorage.removeItem('accessToken')
       localStorage.removeItem('refreshToken')
-      axios.defaults.headers.common['Authorization'] = null
-      state.userInfo = {}
+
+      delete axios.defaults.headers.common['Authorization']
     }
   },
   actions: {
     async login (state, form) {
-      const tokens = await service.Login(form)
-      if (tokens.accessToken) {
+      try {
+        const tokens = await service.Login(form)
         this.commit('login', tokens)
-        return true
+      } catch (e) {
+        throw e
       }
-      return false
     },
 
     logout (state) {
@@ -64,7 +64,7 @@ export default new Vuex.Store({
       return state.userInfo
     },
     isAuth (state) {
-      return state.isAuth
+      return !!(state.accessToken && state.userInfo)
     }
   }
 })

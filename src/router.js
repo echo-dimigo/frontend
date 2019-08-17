@@ -60,9 +60,9 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.needAuth && !store.state.isAuth) {
+  if (to.meta.needAuth && !store.getters.isAuth) {
     next('/auth/login')
-  } else if (to.meta.forbidAuth && store.state.isAuth) {
+  } else if (to.meta.forbidAuth && store.getters.isAuth) {
     next('/')
   } else {
     if (to.meta.title) {
