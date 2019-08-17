@@ -5,6 +5,7 @@ import store from '@/store'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
+import Notification from './views/Notification.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,15 @@ const router = new Router({
       component: AddPost,
       meta: {
         title: '새 글 등록',
+        needAuth: true
+      }
+    },
+    {
+      path: '/notification',
+      name: 'notification',
+      component: Notification,
+      meta: {
+        title: '알림 모아보기',
         needAuth: true
       }
     },
