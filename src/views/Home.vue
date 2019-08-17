@@ -37,6 +37,7 @@ export default {
         :key="`placeholder-${i}`"
         v-for="(_, i) in 10"
         class="home__post__placeholder"
+        :rounded="true"
       >
         <content-placeholders-heading :img="true" />
         <content-placeholders-text :lines="5" />

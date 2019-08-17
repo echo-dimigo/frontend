@@ -84,6 +84,7 @@ export default {
       <content-placeholders
         v-if="loading"
         class="nav__item"
+        :rounded="true"
       >
         <content-placeholders-text :lines="5" />
       </content-placeholders>
