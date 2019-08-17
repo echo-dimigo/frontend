@@ -4,17 +4,22 @@ export default {
 
   methods: {
     async login () {
+      if (!this.form.id || !this.form.password) {
+        this.errorMessage = '모든 입력란을 채워주세요.'
+        return
+      }
       try {
         await this.$store.dispatch('login', this.form)
         this.$router.push('/')
       } catch (e) {
-        alert('로그인을 실패했습니다.')
+        this.errorMessage = '로그인을 실패했습니다.'
       }
     }
   },
 
   data () {
     return {
+      errorMessage: null,
       form: {
         id: null,
         password: null
@@ -41,6 +46,9 @@ export default {
         class="login__form__input"
         v-model="form.password"
       />
+      <span class="login__form__message">
+        {{ errorMessage }}
+      </span>
       <echoos-button
         @click="login"
       >
@@ -77,9 +85,15 @@ export default {
         width: 85%;
       }
 
-      &:not(:last-child) {
+      &:not(:last-of-type) {
         margin-bottom: 15px;
       }
+    }
+
+    &__message {
+      color: $red;
+      font-size: 0.8rem;
+      margin: 15px 0 15px;
     }
   }
 }
