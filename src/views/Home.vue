@@ -56,13 +56,6 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  &__loader {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   &__post {
     &__placeholder {
       &:not(:last-child) {
