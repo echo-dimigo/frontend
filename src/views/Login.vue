@@ -61,6 +61,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: 50vh;
+  max-width: 650px;
 
   &__form {
     flex: 1;
