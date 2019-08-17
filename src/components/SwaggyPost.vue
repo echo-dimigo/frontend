@@ -198,6 +198,7 @@ export default {
   &__content {
     padding: 15px 6px;
     line-height: 25px;
+    word-break: break-word;
 
     &__title {
       display: block;
@@ -234,6 +235,7 @@ export default {
     &__content {
       margin-left: 7px;
       flex: 1;
+      word-break: break-word;
     }
 
     &__info {
