@@ -27,7 +27,7 @@ jobs:
       - image: cypress/base:10
     
     steps:
-      - run: npm run test
+      - run: npm run test:e2e
 
 workflows:
   version: 2
