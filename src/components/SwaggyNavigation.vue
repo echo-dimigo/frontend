@@ -21,7 +21,7 @@ export default {
     this.tags = await service.getAllTag()
     this.tags = this.tags.map(v => {
       v.notification = 0 // 나중에 알림 API 생기면 수정
-      v.to = `/page/${v.idx}`
+      v.to = `/tag/${v.idx}`
       return v
     })
 
