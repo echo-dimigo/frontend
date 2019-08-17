@@ -56,7 +56,10 @@ export default new Vuex.Store({
 
     async refreshAccessToken (state, refreshToken) {
       const refreshedToken = await service.refreshAccessToken(refreshToken)
-      state.commit('login', refreshedToken)
+      state.commit('login', {
+        accessToken: refreshedToken,
+        refreshToken: refreshToken
+      })
     }
   },
   getters: {
@@ -65,6 +68,9 @@ export default new Vuex.Store({
     },
     isAuth (state) {
       return !!(state.accessToken && state.userInfo)
+    },
+    accessToken (state) {
+      return state.accessToken
     }
   }
 })
