@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CreateComment } from '@/api/struct'
+import { Comment, CreateComment } from '@/api/struct'
 
 export default {
   async addComment (comment) {
@@ -9,5 +9,16 @@ export default {
 
   async deleteComment (idx) {
     await axios.delete(`/echo/comment/${idx}`)
+  },
+
+  async editComment (idx, comment) {
+    comment = CreateComment(comment)
+    await axios.put(`/echo/comment/${idx}`, comment)
+  },
+
+  async getCommentNotice () {
+    const { data: { comments } } =
+      await axios.get('/echo/comment/notices')
+    return comments.map(Comment)
   }
 }
