@@ -146,6 +146,7 @@ export default {
     <div class="post__add-comment">
       <echoos-input
         v-model="commentForm.content"
+        @enter="addComment"
         placeholder="댓글을 입력하세요"
         class="post__add-comment__input"
       />
