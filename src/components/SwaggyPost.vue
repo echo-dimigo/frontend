@@ -194,6 +194,7 @@ export default {
     }
 
     &__date {
+      font-size: 0.9rem;
       color: $dark-gray;
     }
   }
