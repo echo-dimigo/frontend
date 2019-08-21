@@ -6,7 +6,7 @@ const config = {
   user: process.env.deploy_user,
   pass: process.env.deploy_password,
   remotePath: process.env.deploy_path,
-  sourcePath: '/root/echo-front/dist'
+  sourcePath: process.env.source_path
 }
  
 sftp(config).then(() => {
