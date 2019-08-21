@@ -83,7 +83,7 @@ export default {
   border-radius: 6px;
   border: solid 1.5px rgba(21, 19, 19, 0.05);
   background-color: $white;
-  padding: 15px 10px;
+  padding: 15px;
 
   &__info {
     &__name {
