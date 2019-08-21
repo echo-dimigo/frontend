@@ -9,7 +9,8 @@
     "cypress:run": "cypress run",
     "cypress:install": "cypress install",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:ci": "start-server-and-test serve http://localhost:8080 cypress:run"
+    "test:ci": "start-server-and-test serve http://localhost:8080 cypress:run",
+    "deploy": "node ./.circleci/deploy.js"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -40,6 +41,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.9.0",
+    "node-sftp-deploy": "^1.0.3",
     "sass-loader": "^7.1.0",
     "start-server-and-test": "^1.10.0",
     "vue-template-compiler": "^2.6.10"

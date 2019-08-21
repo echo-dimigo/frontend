@@ -40,12 +40,28 @@ jobs:
       - run:
             name: Cypress End-To-End Test
             command: npm run test:ci
+  
+  deploy:
+    docker:
+      - image: node:latest
+    working_directory: ~/echo-front
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Deploy to Edison Server
+          command: npm run deploy
 
 workflows:
   version: 2
-  build-and-test:
+  build-and-test-and-deploy:
     jobs:
       - build
       - test-e2e:
           requires:
             - build
+      - deploy:
+          requires:
+            - build
+            - test-e2e
