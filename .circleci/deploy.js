@@ -1,6 +1,8 @@
 const sftp = require('node-sftp-deploy')
 const path = require('path')
 
+console.log(path.resolve(__dirname, '../dist'))
+
 const config = {
   host: process.env.deploy_host,
   port: process.env.deploy_port,
