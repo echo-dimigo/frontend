@@ -1,5 +1,12 @@
 const sftp = require('node-sftp-deploy')
 const path = require('path')
+const fs = require('fs')
+
+fs.readdir('../dist', (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  })
+})
 
 console.log(path.resolve(__dirname, '../dist'))
 
