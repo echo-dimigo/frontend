@@ -26,24 +26,24 @@ jobs:
           paths:
             - echo-front
   
-  test-e2e:
-    docker:
-      - image: cypress/base:10
-    working_directory: ~/echo-front
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/
-      - run:
-            name: Install Cypress
-            command: npm run cypress:install
-      - run:
-            name: Cypress End-To-End Test
-            command: npm run test:ci
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - echo-front
+#   test-e2e:
+#     docker:
+#       - image: cypress/base:10
+#     working_directory: ~/echo-front
+#     steps:
+#       - checkout
+#       - attach_workspace:
+#           at: ~/
+#       - run:
+#             name: Install Cypress
+#             command: npm run cypress:install
+#       - run:
+#             name: Cypress End-To-End Test
+#             command: npm run test:ci
+#       - persist_to_workspace:
+#           root: ~/
+#           paths:
+#             - echo-front
   deploy:
     docker:
       - image: node:latest
@@ -61,9 +61,9 @@ workflows:
   build-and-test-and-deploy:
     jobs:
       - build
-      - test-e2e:
-          requires:
-            - build
+#       - test-e2e:
+#           requires:
+#             - build
       - deploy:
           # filters:
           #   branches:
@@ -71,4 +71,4 @@ workflows:
           #       - master
           requires:
             - build
-            - test-e2e
+#             - test-e2e
