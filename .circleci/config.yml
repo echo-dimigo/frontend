@@ -40,7 +40,10 @@ jobs:
       - run:
             name: Cypress End-To-End Test
             command: npm run test:ci
-  
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - echo-front
   deploy:
     docker:
       - image: node:latest
@@ -62,6 +65,10 @@ workflows:
           requires:
             - build
       - deploy:
+          # filters:
+          #   branches:
+          #     only:
+          #       - master
           requires:
             - build
             - test-e2e
