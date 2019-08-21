@@ -49,8 +49,10 @@ export default {
     },
 
     async addComment () {
+      this.commentPending = true
       this.showComments = true
       await service.addComment(this.commentForm)
+      this.commentPending = false
       await this.refresh()
       this.initForm()
     }
@@ -74,7 +76,8 @@ export default {
       refresher: () => {},
       comment: null,
       showComments: false,
-      commentForm: {}
+      commentForm: {},
+      commentPending: false
     }
   },
 
@@ -153,6 +156,7 @@ export default {
       <echoos-button
         @click="addComment"
         class="post__add-comment__button"
+        :disabled="commentPending"
       >
         댓글 달기
       </echoos-button>
