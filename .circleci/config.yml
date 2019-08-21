@@ -34,9 +34,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
-      - run:
-            name: Install Cypress
-            command: npm run cypress:install
+      # - run:
+      #       name: Install Cypress
+      #       command: npm run cypress:install
       - run:
             name: Cypress End-To-End Test
             command: npm run test:ci
