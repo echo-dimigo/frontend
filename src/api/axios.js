@@ -3,7 +3,7 @@ import store from '@/store'
 
 export default {
   Config () {
-    axios.defaults.baseURL = 'https://dev-api.dimigo.in'
+    axios.defaults.baseURL = 'https://api.dimigo.in'
     axios.interceptors.response.use(response => {
       return response
     }, async error => {
