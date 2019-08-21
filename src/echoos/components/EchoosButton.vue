@@ -11,6 +11,7 @@ export default {
   },
   methods: {
     emitClick () {
+      if (this.disabled) return
       this.$emit('click')
     }
   }
@@ -19,11 +20,16 @@ export default {
 
 <template>
   <button
+    v-if="!disabled"
     v-ripple="'rgba(255, 255, 255, .2)'"
-    :class="{
-      'button': true,
-      'button-disabled': disabled
-    }"
+    class="button"
+    @click="emitClick"
+  >
+    <slot />
+  </button>
+  <button
+    v-else
+    class="button button-disabled"
     @click="emitClick"
   >
     <slot />
@@ -51,6 +57,7 @@ export default {
 
   &-disabled {
     cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 </style>
