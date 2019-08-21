@@ -1,5 +1,5 @@
 <script>
-import Brand from '@/assets/logo.png'
+import Brand from '@/assets/images/logo.png'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -44,7 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/colors.scss';
-@import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
 
 a {
   text-decoration: none;

@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 @import './scss/normalize.css';
 @import './scss/colors.scss';
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import './scss/font-faces';
 
 * {
   font-family: 'Spoqa Han Sans', 'Sans-serif';
