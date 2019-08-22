@@ -23,7 +23,7 @@ export default {
 
   methods: {
     async refresh () {
-      this.post = await service.getPostById(this.post.idx)
+      this.currentPost = await service.getPostById(this.post.idx)
     },
 
     toggleComment () {
@@ -79,6 +79,7 @@ export default {
 
   data () {
     return {
+      currentPost: this.post,
       refresher: () => {},
       comment: null,
       showComments: false,
@@ -99,19 +100,19 @@ export default {
       <div class="post__info__image" />
       <div class="post__info__text">
         <span class="post__info__name">
-          {{ post.writer.name }}
+          {{ currentPost.writer.name }}
         </span>
         <span class="post__info__date">
-          {{ post.date | formatDate }}
+          {{ currentPost.date | formatDate }}
         </span>
       </div>
     </div>
     <div class="post__content">
       <span class="post__content__title">
-        {{ post.title }}
+        {{ currentPost.title }}
       </span>
       <span class="post__content__text">
-        {{ post.content }}
+        {{ currentPost.content }}
       </span>
     </div>
     <div
@@ -119,7 +120,7 @@ export default {
       class="post__reaction"
     >
       <span class="post__reaction__comment">
-        댓글 {{ post.comments.length }}개
+        댓글 {{ currentPost.comments.length }}개
       </span>
     </div>
     <div
@@ -128,7 +129,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in post.comments"
+        v-for="(comment, i) in currentPost.comments"
         class="post__comment"
       >
         <div class="post__comment__photo" />
