@@ -49,7 +49,12 @@ export default {
     },
 
     async addComment () {
-      if (!this.commentForm.content) return
+      if (!this.commentForm.content || !this.commentForm.content.trim()) {
+        this.$toast.error('댓글을 입력해 주세요.', {
+          position: 'top-right'
+        })
+        return
+      }
       this.commentPending = true
       this.showComments = true
       await service.addComment(this.commentForm)
