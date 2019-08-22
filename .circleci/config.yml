@@ -8,14 +8,14 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: v1-dependencies-{{ checksum "./package.json" }}
+          key: v2-dependencies-{{ checksum "./package.json" }}
 
       - run: npm install
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "./package.json" }}
+          key: v2-dependencies-{{ checksum "./package.json" }}
 
       - run: npm run build
 
