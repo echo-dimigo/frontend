@@ -233,6 +233,7 @@ export default {
     border-bottom: solid 2px rgba(21, 19, 19, 0.05);
 
     &__comment {
+      cursor: pointer;
       float: right;
       color: $dark-gray;
     }
@@ -272,6 +273,7 @@ export default {
     }
 
     &__tool {
+      cursor: pointer;
       float: right;
       margin-right: 6px;
       color: $dark-gray;

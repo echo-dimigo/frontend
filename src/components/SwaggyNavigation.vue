@@ -109,6 +109,7 @@ export default {
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
   &__item {
+    cursor: pointer;
     padding: 10px 0 10px 15px;
     color: $dark-gray;
     width: 85%;

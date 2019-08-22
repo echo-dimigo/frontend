@@ -111,6 +111,7 @@ export default {
   }
 
   &__tool {
+    cursor: pointer;
     width: 80%;
     display: flex;
     justify-content: space-around;
