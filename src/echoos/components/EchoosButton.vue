@@ -54,6 +54,7 @@ export default {
   padding: 0.5rem 1rem;
 
   outline: none;
+  cursor: pointer;
 
   &-disabled {
     cursor: not-allowed;
