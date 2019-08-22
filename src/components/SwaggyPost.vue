@@ -12,6 +12,10 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    sampleCommentCount: {
+      type: Number,
+      default: 3
     }
   },
 
@@ -48,6 +52,10 @@ export default {
       }
     },
 
+    expandComment () {
+      this.showFullComments = true
+    },
+
     async addComment () {
       if (!this.commentForm.content || !this.commentForm.content.trim()) {
         this.$toast.error('댓글을 입력해 주세요.', {
@@ -82,7 +90,8 @@ export default {
       currentPost: this.post,
       refresher: () => {},
       comment: null,
-      showComments: false,
+      showComments: true,
+      showFullComments: false,
       commentForm: {},
       commentPending: false
     }
@@ -124,11 +133,12 @@ export default {
       </span>
     </div>
     <div
+      v-show="showComments"
       class="post__comment__list"
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in showComments ? currentPost.comments : currentPost.comments.slice(0, 3)"
+        v-for="(comment, i) in showFullComments ? currentPost.comments : currentPost.comments.slice(0, this.sampleCommentCount)"
         class="post__comment"
       >
         <div class="post__comment__photo" />
@@ -150,6 +160,13 @@ export default {
             {{ comment.content }}
           </span>
         </div>
+      </div>
+      <div
+        v-show="currentPost.comments.length > this.sampleCommentCount && !showFullComments"
+        @click="expandComment"
+        class="post__comment__more"
+      >
+        댓글 더보기
       </div>
     </div>
     <div class="post__add-comment">
@@ -243,6 +260,7 @@ export default {
     padding: 13px 10px;
     display: flex;
     align-items: center;
+    align-content: center;
     border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__photo {
@@ -277,6 +295,14 @@ export default {
       float: right;
       margin-right: 6px;
       color: $dark-gray;
+    }
+
+    &__more {
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+
+      color: $brand;
     }
   }
 
