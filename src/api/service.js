@@ -3,9 +3,16 @@ import PostService from './post/user'
 import TagService from './tag/user'
 import CommentService from './comment/user'
 
+import PostManagerService from './post/manager'
+import TagManagerService from './tag/manager'
+import CommentManagerService from './comment/manager'
+
 export default {
   ...AuthService,
   ...PostService,
   ...TagService,
-  ...CommentService
+  ...CommentService,
+  ...PostManagerService,
+  ...TagManagerService,
+  ...CommentManagerService
 }
