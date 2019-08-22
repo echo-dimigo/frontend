@@ -1,7 +1,7 @@
-import AuthService from './auth'
-import PostService from './post'
-import TagService from './tag'
-import CommentService from './comment'
+import AuthService from './auth/user'
+import PostService from './post/user'
+import TagService from './tag/user'
+import CommentService from './comment/user'
 
 export default {
   ...AuthService,
