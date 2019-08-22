@@ -49,6 +49,7 @@ export default {
     },
 
     async addComment () {
+      if (!this.commentForm.content) return
       this.commentPending = true
       this.showComments = true
       await service.addComment(this.commentForm)
