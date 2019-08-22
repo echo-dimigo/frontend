@@ -9,6 +9,8 @@ const config = {
   remotePath: process.env.deploy_path,
   sourcePath: path.resolve(__dirname, '../dist')
 }
+
+console.log(config)
  
 sftp(config).then(() => {
   console.log(`Deployed to ${config.host}`)
