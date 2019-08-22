@@ -5,6 +5,8 @@ import locale from 'date-fns/locale/ko'
 import service from '@/api/service'
 import { mapGetters } from 'vuex'
 
+import Swal from 'sweetalert2'
+
 export default {
   name: 'SwaggyPost',
 
@@ -34,9 +36,21 @@ export default {
       this.showComments = !this.showComments
     },
 
-    async deleteComment (idx) {
-      await service.deleteComment(idx)
-      await this.refresh()
+    deleteComment (idx) {
+      Swal.fire({
+        title: '확인',
+        text: '정말로 댓글을 지우시겠습니까?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#5fae9f',
+        cancelButtonText: '취소',
+        confirmButtonText: '확인'
+      }).then(async (result) => {
+        if (result.value) {
+          await service.deleteComment(idx)
+          await this.refresh()
+        }
+      })
     },
 
     isMyComment (comment) {
