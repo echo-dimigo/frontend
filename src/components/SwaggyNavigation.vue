@@ -121,6 +121,8 @@ export default {
       border-bottom-right-radius: 25px;
 
       color: $white;
+
+      transition: all 0.5s;
     }
 
     &__box {
