@@ -71,10 +71,10 @@ workflows:
           requires:
             - install
       - deploy:
-          filters:
-            branches:
-              only:
-                - master
+#           filters:
+#             branches:
+#               only:
+#                 - master
           requires:
             - test-e2e
             - build
