@@ -1,10 +1,6 @@
 /** Only ECHO Subset for Brand Name */
-@font-face {
-  font-family: 'Jua';
-  src: url('./assets/fonts/Jua.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean'); 
 
 @font-face {
   font-family: 'Spoqa Han Sans';

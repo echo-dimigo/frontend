@@ -88,9 +88,10 @@ a {
       color: $brand;
       user-select: none;
 
+      margin-top: 0.3rem;
       margin-left: 0.3em;
 
-      font-family: 'Jua', sans-serif;
+      font-family: 'Black Han Sans', sans-serif;
       font-size: 1.5em;
     }
   }
