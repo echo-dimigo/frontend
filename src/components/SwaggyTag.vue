@@ -1,4 +1,6 @@
 <script>
+import service from '@/api/service'
+
 export default {
   name: 'SwaggyTag',
 
@@ -6,6 +8,12 @@ export default {
     tag: {
       type: Object,
       required: true
+    }
+  },
+
+  methods: {
+    async subscribe () {
+      await service.requestSubscription(this.tag.idx)
     }
   },
 
@@ -63,6 +71,7 @@ export default {
       {{ tag.description }}
     </div>
     <div
+      @click="subscribe"
       :class="{
         'tag__join': true,
         'tag__join-private': tag.joinOption === 'private'
@@ -111,6 +120,7 @@ export default {
     width: fit-content;
     margin-top: 10px;
     margin-left: auto;
+    cursor: pointer;
 
     &-private {
       color: $red;
