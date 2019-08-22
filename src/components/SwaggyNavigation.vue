@@ -34,6 +34,11 @@ export default {
       loading: false,
       menus: [
         {
+          name: '뉴스피드',
+          notification: 0,
+          to: '/'
+        },
+        {
           name: '구독 태그 전체',
           notification: 0,
           to: '/tag/subscribed'
