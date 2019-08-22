@@ -65,3 +65,13 @@ export const CreateComment = comment => ({
   'target_idx': comment.targetIdx,
   'content': comment.content
 })
+
+export const InvitateUser = form => ({
+  'user_idx': form.userIdx,
+  'tag_idx': form.tagIdx,
+  'admin': form.isAdmin,
+  'modification_allowed': form.permission.modification,
+  'invitation_allowed': form.permission.invitation,
+  'post_allowed': form.permission.post,
+  'acceptance_allowed': form.permission.acceptance
+})
