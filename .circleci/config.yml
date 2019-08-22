@@ -1,74 +1,80 @@
 version: 2.1
-jobs:
-  build:
+
+executors:
+  default:
+    working_directory: ~/project/echo-front
     docker:
       - image: cypress/base:10
-    working_directory: ~/echo-front
 
+jobs:
+  install:
+    executor: default
     steps:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
       - run:
           name: Install Dependencies
-          command: npm install
+          command: yarn install --frozen-lockfile
       - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: Build Project
-          command: npm run build
+            - ~/.cache
       - persist_to_workspace:
           root: ~/
           paths:
-            - echo-front
-  
-#   test-e2e:
-#     docker:
-#       - image: cypress/base:10
-#     working_directory: ~/echo-front
-#     steps:
-#       - checkout
-#       - attach_workspace:
-#           at: ~/
-#       - run:
-#             name: Install Cypress
-#             command: npm run cypress:install
-#       - run:
-#             name: Cypress End-To-End Test
-#             command: npm run test:ci
-#       - persist_to_workspace:
-#           root: ~/
-#           paths:
-#             - echo-front
-  deploy:
-    docker:
-      - image: node:latest
-    working_directory: ~/echo-front
+            - project
+            - .cache/Cypress
+  build:
+    executor: default
     steps:
-      - checkout
       - attach_workspace:
           at: ~/
-      - run:
-          name: Deploy to Edison Server
-          command: npm run deploy
+      - run: yarn run build
+      - store_artifacts:
+          path: ~/project/echo-front/dist
+          destination: dist
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project
+  test-e2e:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn run test:ci
+      - store_artifacts:
+          path: ~/project/echo-front/tests/videos
+          destination: tests/videos
+      - store_artifacts:
+          path: ~/project/echo-front/tests/screenshots
+          destination: tests/screenshots
+  deploy:
+    executor: default
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run: yarn run deploy
 
 workflows:
-  version: 2
-  build-and-test-and-deploy:
+  test-and-deploy:
     jobs:
-      - build
-#       - test-e2e:
-#           requires:
-#             - build
-      - deploy:
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+      - install
+      - test-e2e:
           requires:
+            - install
+      - build:
+          requires:
+            - install
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test-e2e
             - build
-#             - test-e2e
