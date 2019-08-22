@@ -124,12 +124,11 @@ export default {
       </span>
     </div>
     <div
-      v-show="showComments"
       class="post__comment__list"
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in currentPost.comments"
+        v-for="(comment, i) in showComments ? currentPost.comments : currentPost.comments.slice(0, 3)"
         class="post__comment"
       >
         <div class="post__comment__photo" />
