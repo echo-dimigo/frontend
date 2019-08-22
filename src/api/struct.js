@@ -10,6 +10,20 @@ export const Token = tokens => ({
   refreshToken: tokens['refresh_token']
 })
 
+export const User = user => ({
+  idx: user['idx'],
+  type: user['user_type'],
+  email: user['email'],
+  id: user['id'],
+  name: user['name'],
+  grade: user['grade'],
+  klass: user['klass'],
+  number: user['number'],
+  photo: user['photo'],
+  serial: user['serial'],
+  ssoToken: user['sso_token']
+})
+
 export const Post = post => ({
   idx: post['idx'],
   title: post['title'],

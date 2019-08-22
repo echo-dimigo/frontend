@@ -1,10 +1,11 @@
 import jwtDecode from 'jwt-decode'
+import { User } from '@/api/struct'
 import axios from 'axios'
 
 export default {
   async login (state, { accessToken, refreshToken }) {
     const decoded = jwtDecode(accessToken)
-    state.userInfo = decoded.identity[0]
+    state.userInfo = User(decoded.identity[0])
     state.accessToken = accessToken
 
     localStorage.setItem('accessToken', accessToken)
