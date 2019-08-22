@@ -180,13 +180,13 @@ export default {
 
   background-color: $white;
 
-  padding: 6px 10px;
+  padding: 15px 15px 0;
 
   &__info {
     display: flex;
     align-items: center;
-    padding: 6px 0;
-    border-bottom: solid 2px rgba(21, 19, 19, 0.05);
+    padding: 0 0 10px;
+    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__image {
       width: 3.5em;
@@ -196,12 +196,13 @@ export default {
       background-repeat: no-repeat;
       border-radius: 50%;
       border: solid 1px rgba(21, 19, 19, 0.05);
-      margin-right: 7px;
+      margin-right: 10px;
     }
 
     &__name {
-      font-size: 1.3rem;
       display: block;
+      margin-bottom: 2px;
+      font-size: 1.3rem;
     }
 
     &__date {
@@ -211,19 +212,22 @@ export default {
   }
 
   &__content {
-    padding: 15px 6px;
-    line-height: 25px;
+    padding: 12px 6px;
+    padding-top: 15px;
+    // line-height: 25px;
     word-break: break-word;
 
     &__title {
       display: block;
       line-height: 40px;
       font-weight: bold;
+      color: black;
     }
 
     &__text {
-      white-space: pre-line;
+      line-height: 1.5;
       word-wrap: break-word;
+      color: #151313;
     }
   }
 
@@ -231,7 +235,7 @@ export default {
     width: 100%;
     height: 2rem;
     user-select: none;
-    border-bottom: solid 2px rgba(21, 19, 19, 0.05);
+    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__comment {
       cursor: pointer;
@@ -252,24 +256,24 @@ export default {
       height: 3rem;
       border: 2px solid $gray;
       border-radius: 50%;
+      margin-right: 8px;
     }
 
     &__content {
-      margin-left: 7px;
       flex: 1;
       word-break: break-word;
     }
 
     &__info {
-      line-height: 30px;
+      margin-bottom: 2px;
 
       &__writer {
         font-size: 1.1rem;
       }
 
       &__date {
-        color: $dark-gray;
         font-size: 0.8rem;
+        color: $dark-gray;
       }
     }
 
