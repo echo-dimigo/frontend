@@ -34,12 +34,15 @@ jobs:
       - checkout
       - attach_workspace:
           at: ~/
+      # - run:
+      #       name: Install Cypress
+      #       command: npm run cypress:install
+      # - run:
+      #       name: Cypress End-To-End Test
+      #       command: npm run test:ci
       - run:
-            name: Install Cypress
-            command: npm run cypress:install
-      - run:
-            name: Cypress End-To-End Test
-            command: npm run test:ci
+          name: Deploy to Edison Server
+          command: npm run deploy
   
   deploy:
     docker:
@@ -61,7 +64,7 @@ workflows:
       - test-e2e:
           requires:
             - build
-      - deploy:
-          requires:
-            - build
-            - test-e2e
+      # - deploy:
+      #     requires:
+      #       - build
+      #       - test-e2e
