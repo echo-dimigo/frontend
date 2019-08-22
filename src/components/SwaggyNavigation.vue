@@ -169,7 +169,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: solid 1.5px #151313;
+    border-top: solid 1.5px rgba(21, 19, 19, 0.05);
     user-select: none;
     padding: 1em 0;
     font-weight: 600;
