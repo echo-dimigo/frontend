@@ -136,6 +136,7 @@ export default {
 
     &__title {
       user-select: none;
+      font-weight: 600;
     }
 
     &__badge {
@@ -171,6 +172,7 @@ export default {
     border-top: solid 1.5px rgba(21, 19, 19, 0.05);
     user-select: none;
     padding: 1em 0;
+    font-weight: 600;
   }
 }
 </style>

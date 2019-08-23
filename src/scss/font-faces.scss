@@ -1,30 +1,20 @@
-/** Only ECHO Subset for Brand Name */
-// @import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean'); 
-
 @font-face {
-  font-family: 'Spoqa Han Sans';
-  src: url('./assets/fonts/SpoqaHanSansRegular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'NanumSquare';
+  font-weight: 400;
+  src: url('./assets/fonts/NanumSquareR.woff') format('woff');
 }
-
 @font-face {
-  font-family: 'Spoqa Han Sans';
-  src: url('./assets/fonts/SpoqaHanSansBold.woff2') format('woff2');
+  font-family: 'NanumSquare';
   font-weight: 700;
-  font-style: normal;
+  src: url('./assets/fonts/NanumSquareB.woff') format('woff');
 }
-
 @font-face {
-  font-family: 'Spoqa Han Sans';
-  src: url('./assets/fonts/SpoqaHanSansLight.woff2') format('woff2');
+  font-family: 'NanumSquare';
+  font-weight: 800;
+  src: url('./assets/fonts/NanumSquareEB.woff') format('woff');
+}
+@font-face {
+  font-family: 'NanumSquare';
   font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Spoqa Han Sans';
-  src: url('./assets/fonts/SpoqaHanSansThin.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
+  src: url('./assets/fonts/NanumSquareL.woff') format('woff');
 }

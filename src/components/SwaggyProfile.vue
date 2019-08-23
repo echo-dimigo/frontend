@@ -91,6 +91,7 @@ export default {
       display: block;
       font-size: 1.5rem;
       margin-bottom: 7px;
+      font-weight: 700;
     }
 
     &__class {
