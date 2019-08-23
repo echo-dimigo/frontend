@@ -14,6 +14,7 @@ export default {
         this.$toast.error('제목과 내용을 채워주세요.', {
           position: 'top-right'
         })
+        return
       }
       await service.addPost(this.form)
       this.$router.push('/')
