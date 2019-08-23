@@ -10,6 +10,11 @@ export default {
 
   methods: {
     async addPost () {
+      if (!this.form.title || !this.form.content) {
+        this.$toast.error('제목과 내용을 채워주세요.', {
+          position: 'top-right'
+        })
+      }
       await service.addPost(this.form)
       this.$router.push('/')
     }
