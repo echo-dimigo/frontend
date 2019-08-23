@@ -23,7 +23,12 @@ export default {
   data () {
     return {
       expand: true,
-      meal: {}
+      meal: {},
+      mealItems: [
+        { name: '아침', code: 'breakfast' },
+        { name: '점심', code: 'lunch' },
+        { name: '저녁', code: 'dinner' }
+      ]
     }
   }
 }
@@ -48,30 +53,16 @@ export default {
     </div>
     <template v-if="expand">
       <div class="meal__list">
-        <div class="meal__list__item">
+        <div
+          :key="`meal-${i}`"
+          v-for="(item, i) in mealItems"
+          class="meal__list__item"
+        >
           <span class="meal__list__item__title">
-            아침
+            {{ item.name }}
           </span>
           <span class="meal__list__item__content">
-            {{ meal.breakfast | separateMeal }}
-          </span>
-        </div>
-
-        <div class="meal__list__item">
-          <span class="meal__list__item__title">
-            점심
-          </span>
-          <span class="meal__list__item__content">
-            {{ meal.lunch | separateMeal }}
-          </span>
-        </div>
-
-        <div class="meal__list__item">
-          <span class="meal__list__item__title">
-            저녁
-          </span>
-          <span class="meal__list__item__content">
-            {{ meal.dinner | separateMeal }}
+            {{ meal[item.code] | separateMeal }}
           </span>
         </div>
       </div>
@@ -132,5 +123,15 @@ export default {
       }
     }
   }
+}
+
+.expand-toggle-enter-active, .expand-toggle-leave-active {
+  transition: all 400ms ease;
+}
+
+.expand-toggle-enter, .expand-toggle-leave-to {
+  line-height: 0;
+  padding: 0;
+  overflow: hidden;
 }
 </style>
