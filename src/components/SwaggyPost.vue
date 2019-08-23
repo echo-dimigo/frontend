@@ -170,7 +170,7 @@ export default {
               class="post__comment__tool icon-delete"
             />
           </div>
-          <span class="post__comment__info__date">
+          <span class="post__comment__info__content">
             {{ comment.content }}
           </span>
         </div>
@@ -233,10 +233,11 @@ export default {
       display: block;
       margin-bottom: 2px;
       font-size: 1.3rem;
+      font-weight: 700;
     }
 
     &__date {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: $dark-gray;
     }
   }
@@ -300,10 +301,17 @@ export default {
 
       &__writer {
         font-size: 1.1rem;
+        font-weight: 700;
       }
 
       &__date {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        color: $dark-gray;
+      }
+
+      &__content {
+        font-size: 0.9rem;
+        font-weight: 500;
         color: $dark-gray;
       }
     }
@@ -321,6 +329,7 @@ export default {
       margin-top: 10px;
 
       color: $brand;
+      font-weight: 600;
     }
   }
 

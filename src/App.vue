@@ -21,7 +21,7 @@ export default {
 @import './scss/font-faces';
 
 * {
-  font-family: 'Spoqa Han Sans', 'Sans-serif';
+  font-family: 'NanumSquare', sans-serif;
 }
 
 .app {
