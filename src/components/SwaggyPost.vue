@@ -15,7 +15,7 @@ export default {
       type: Object,
       required: true
     },
-    sampleCommentCount: {
+    commentsPreviewCount: {
       type: Number,
       default: 3
     }
@@ -152,7 +152,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in showFullComments ? currentPost.comments : currentPost.comments.slice(0, this.sampleCommentCount)"
+        v-for="(comment, i) in showFullComments ? currentPost.comments : currentPost.comments.slice(0, this.commentsPreviewCount)"
         class="post__comment"
       >
         <div class="post__comment__photo" />
@@ -176,7 +176,7 @@ export default {
         </div>
       </div>
       <div
-        v-show="currentPost.comments.length > this.sampleCommentCount && !showFullComments"
+        v-show="currentPost.comments.length > this.commentsPreviewCount && !showFullComments"
         @click="expandComment"
         class="post__comment__more"
       >
