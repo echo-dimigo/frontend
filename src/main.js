@@ -11,15 +11,16 @@ import Echoos from './echoos'
 import 'dimigoincon'
 import VueContentPlaceholders from 'vue-content-placeholders'
 import VueToast from 'vue-toast-notification'
-
 import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
 axios.Config()
 
 Vue.use(VueContentPlaceholders)
-Vue.use(VueToast)
 Vue.use(Echoos)
+Vue.use(VueToast, {
+  position: 'top-right'
+})
 
 if (localStorage.accessToken) {
   store.commit('login', localStorage)
