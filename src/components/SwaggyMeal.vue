@@ -16,6 +16,7 @@ export default {
 
   filters: {
     separateMeal (val) {
+      if (!val) return '급식 정보를 로딩 중입니다.'
       return val.replace(/\//gi, ' | ')
     }
   },
@@ -23,7 +24,11 @@ export default {
   data () {
     return {
       expand: true,
-      meal: {},
+      meal: {
+        breakfast: '',
+        lunch: '',
+        dinenr: ''
+      },
       mealItems: [
         { name: '아침', code: 'breakfast' },
         { name: '점심', code: 'lunch' },
