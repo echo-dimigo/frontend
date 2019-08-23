@@ -11,6 +11,7 @@ import Echoos from './echoos'
 import 'dimigoincon'
 import VueContentPlaceholders from 'vue-content-placeholders'
 import VueToast from 'vue-toast-notification'
+import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
 axios.Config()
