@@ -167,6 +167,10 @@ export default {
               @click="deleteComment(comment.idx)"
               class="post__comment__tool icon-delete"
             />
+            <span
+              v-if="isMyComment(comment)"
+              class="post__comment__tool icon-edit"
+            />
           </div>
           <span class="post__comment__info__content">
             {{ comment.content }}
