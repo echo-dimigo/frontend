@@ -45,7 +45,7 @@ export default {
         confirmButtonColor: '#5fae9f',
         cancelButtonText: '취소',
         confirmButtonText: '확인'
-      }).then(async (result) => {
+      }).then(async result => {
         if (result.value) {
           await service.deleteComment(idx)
           await this.refresh()
