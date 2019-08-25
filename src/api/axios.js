@@ -1,19 +1,32 @@
 import axios from 'axios'
 import store from '@/store'
 
+import Vue from 'vue'
+import VueToast from 'vue-toast-notification'
+
+Vue.use(VueToast, {
+  position: 'top-right'
+})
+
 export default {
   Config () {
     axios.defaults.baseURL = 'https://api.dimigo.in'
     axios.interceptors.response.use(response => {
       return response
     }, async error => {
-      if (error.response.status === 401) {
-        await store.dispatch('refreshAccessToken', localStorage.refreshToken)
-        error.config.headers = {
-          Authorization: `Bearer ${store.getters.accessToken}`
+      try {
+        if (error.response.status === 401) {
+          await store.dispatch('refreshAccessToken', localStorage.refreshToken)
+          error.config.headers = {
+            Authorization: `Bearer ${store.getters.accessToken}`
+          }
+          return axios.request(error.config)
+        } else {
+          Vue.$toast.error('작업을 수행하던 중 에러가 발생했습니다.')
+          return Promise.reject(error)
         }
-        return axios.request(error.config)
-      } else {
+      } catch (e) {
+        Vue.$toast.error('네트워크 연결을 확인해 주세요.')
         return Promise.reject(error)
       }
     })
