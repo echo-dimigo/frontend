@@ -8,17 +8,20 @@ export default {
         this.$toast.error('모든 입력란을 채워주세요.')
         return
       }
+      this.pending = true
       try {
         await this.$store.dispatch('login', this.form)
         this.$router.push('/')
       } catch (e) {
         this.$toast.error('로그인을 실패했습니다.')
       }
+      this.pending = false
     }
   },
 
   data () {
     return {
+      pending: false,
       form: {
         id: null,
         password: null
@@ -47,6 +50,7 @@ export default {
       />
       <echoos-button
         @click="login"
+        :disabled="pending"
       >
         로그인
       </echoos-button>
