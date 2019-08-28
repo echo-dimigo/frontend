@@ -24,7 +24,10 @@ export default {
   computed: {
     ...mapGetters([
       'user'
-    ])
+    ]),
+    reversedComments: function () {
+      return this.currentPost.comments.slice().reverse()
+    }
   },
 
   methods: {
@@ -152,7 +155,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in showFullComments ? currentPost.comments : currentPost.comments.slice(-this.commentsPreviewCount)"
+        v-for="(comment, i) in showFullComments ? this.reversedComments : this.reversedComments.slice(0, this.commentsPreviewCount)"
         class="post__comment"
       >
         <div class="post__comment__photo" />
