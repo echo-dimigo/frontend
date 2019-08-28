@@ -48,7 +48,7 @@ export default {
         confirmButtonColor: '#5fae9f',
         cancelButtonText: '취소',
         confirmButtonText: '확인'
-      }).then(async (result) => {
+      }).then(async result => {
         if (result.value) {
           await service.deleteComment(idx)
           await this.refresh()
@@ -75,9 +75,7 @@ export default {
 
     async addComment () {
       if (!this.commentForm.content || !this.commentForm.content.trim()) {
-        this.$toast.error('댓글을 입력해 주세요.', {
-          position: 'top-right'
-        })
+        this.$toast.error('댓글을 입력해 주세요.')
         return
       }
       this.commentPending = true
