@@ -146,6 +146,7 @@ export default {
   }
 
   &__button {
+    cursor: pointer;
     padding: 1em 0;
 
     display: flex;
