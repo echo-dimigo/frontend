@@ -182,7 +182,7 @@ export default {
         </div>
       </div>
       <div
-        v-show="currentPost.comments.length > this.commentsPreviewCount && !showFullComments"
+        v-show="currentPost.comments.length > commentsPreviewCount && !showFullComments"
         @click="expandComment"
         class="post__comment__more"
       >
