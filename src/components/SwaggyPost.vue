@@ -154,7 +154,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in showFullComments ? this.reversedComments : this.reversedComments.slice(0, this.commentsPreviewCount)"
+        v-for="(comment, i) in showFullComments ? reversedComments : reversedComments.slice(0, commentsPreviewCount)"
         class="post__comment"
       >
         <div class="post__comment__photo" />
