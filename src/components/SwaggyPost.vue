@@ -25,7 +25,8 @@ export default {
     ...mapGetters([
       'user'
     ]),
-    reversedComments: function () {
+
+    reversedComments () {
       return this.currentPost.comments.slice().reverse()
     }
   },
