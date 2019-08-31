@@ -15,7 +15,7 @@ export default {
       type: Object,
       required: true
     },
-    sampleCommentCount: {
+    commentsPreviewCount: {
       type: Number,
       default: 3
     }
@@ -24,7 +24,15 @@ export default {
   computed: {
     ...mapGetters([
       'user'
-    ])
+    ]),
+
+    reversedComments () {
+      return this.currentPost.comments.slice().reverse()
+    },
+
+    previewComments () {
+      return this.reversedComments.slice(0, this.commentsPreviewCount)
+    }
   },
 
   methods: {
@@ -150,7 +158,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in showFullComments ? currentPost.comments : currentPost.comments.slice(0, this.sampleCommentCount)"
+        v-for="(comment, i) in showFullComments ? reversedComments : previewComments"
         class="post__comment"
       >
         <div class="post__comment__photo" />
@@ -174,7 +182,7 @@ export default {
         </div>
       </div>
       <div
-        v-show="currentPost.comments.length > this.sampleCommentCount && !showFullComments"
+        v-show="currentPost.comments.length > commentsPreviewCount && !showFullComments"
         @click="expandComment"
         class="post__comment__more"
       >
