@@ -140,9 +140,9 @@ export default {
       <span class="post__content__title">
         {{ currentPost.title }}
       </span>
-      <span class="post__content__text">
+      <pre class="post__content__text" >
         {{ currentPost.content }}
-      </span>
+      </pre>
     </div>
     <div
       @click="toggleComment"
@@ -251,7 +251,6 @@ export default {
   &__content {
     padding: 12px 6px;
     padding-top: 15px;
-    // line-height: 25px;
     word-break: break-word;
 
     &__title {
@@ -263,7 +262,9 @@ export default {
 
     &__text {
       line-height: 1.5;
+      white-space: pre-line;
       word-wrap: break-word;
+      font-family: inherit;
       color: #151313;
     }
   }
