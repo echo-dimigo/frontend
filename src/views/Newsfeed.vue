@@ -3,7 +3,7 @@ import SwaggyPost from '@/components/SwaggyPost.vue'
 import service from '@/api/service'
 
 export default {
-  name: 'Home',
+  name: 'Newsfeed',
   components: { SwaggyPost },
   data () {
     return {
