@@ -53,7 +53,7 @@ export default {
     <echoos-button
       @click="addPost"
       class="post__button"
-      :disabled="pending"
+      :pending="pending"
     >
       등록하기
     </echoos-button>

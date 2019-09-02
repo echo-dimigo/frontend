@@ -50,7 +50,7 @@ export default {
       />
       <echoos-button
         @click="login"
-        :disabled="pending"
+        :pending="pending"
       >
         로그인
       </echoos-button>

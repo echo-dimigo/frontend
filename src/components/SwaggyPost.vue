@@ -199,7 +199,7 @@ export default {
       <echoos-button
         @click="addComment"
         class="post__add-comment__button"
-        :disabled="commentPending"
+        :pending="commentPending"
       >
         댓글 달기
       </echoos-button>
