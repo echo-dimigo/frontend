@@ -24,6 +24,8 @@ jobs:
       run: |
         npm install
         npm run build
+    env:
+      CI: true
   deploy:
     name: Deploy to Edison Server
     runs-on: ubuntu-latest
@@ -36,5 +38,4 @@ jobs:
         FTP_SERVER: ${{ secrets.FTP_SERVER }}
         FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
         LOCAL_DIR: ./dist
-      env:
         CI: true
