@@ -24,8 +24,8 @@ jobs:
       run: |
         npm install
         npm run build
-    env:
-      CI: true
+      env:
+        CI: true
   deploy:
     name: Deploy to Edison Server
     runs-on: ubuntu-latest
