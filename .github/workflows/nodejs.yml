@@ -24,6 +24,17 @@ jobs:
       run: |
         npm install
         npm run build
-        npm run test:ci
+  deploy:
+    name: Deploy to Edison Server
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Deploy to Edison Server
+      uses: SamKirkland/FTP-Deploy-Action@master
+      env:
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        LOCAL_DIR: ./dist
       env:
         CI: true
