@@ -1,5 +1,5 @@
 <script>
-import service from '@/api/service'
+import { TagService } from '@/api/service'
 
 export default {
   name: 'SwaggyNavigation',
@@ -18,7 +18,7 @@ export default {
   async created () {
     this.loading = true
 
-    this.tags = await service.getAllTag()
+    this.tags = await TagService.getAllTag()
     this.tags = this.tags.map(v => {
       v.notification = 0 // 나중에 알림 API 생기면 수정
       v.to = `/tag/${v.idx}`

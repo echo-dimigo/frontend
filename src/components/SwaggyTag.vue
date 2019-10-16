@@ -1,5 +1,5 @@
 <script>
-import service from '@/api/service'
+import { TagService } from '@/api/service'
 
 export default {
   name: 'SwaggyTag',
@@ -13,7 +13,7 @@ export default {
 
   methods: {
     async subscribe () {
-      await service.requestSubscription(this.tag.idx)
+      await TagService.requestSubscription(this.tag.idx)
     }
   },
 

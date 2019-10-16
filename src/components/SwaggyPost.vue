@@ -2,7 +2,7 @@
 import { format } from 'date-fns'
 import locale from 'date-fns/locale/ko'
 
-import service from '@/api/service'
+import { PostService, CommentService } from '@/api/service'
 import { mapGetters } from 'vuex'
 
 import Swal from 'sweetalert2'
@@ -37,7 +37,7 @@ export default {
 
   methods: {
     async refresh () {
-      this.currentPost = await service.getPostById(this.post.idx)
+      this.currentPost = await PostService.getPostById(this.post.idx)
     },
 
     toggleComment () {
@@ -55,7 +55,7 @@ export default {
         confirmButtonText: '확인'
       }).then(async result => {
         if (result.value) {
-          await service.deleteComment(idx)
+          await CommentService.deleteComment(idx)
           await this.refresh()
         }
       })
@@ -85,7 +85,7 @@ export default {
       }
       this.commentPending = true
       this.showComments = true
-      await service.addComment(this.commentForm)
+      await CommentService.addComment(this.commentForm)
       this.commentPending = false
       await this.refresh()
       this.initForm()

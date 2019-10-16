@@ -1,5 +1,5 @@
 <script>
-import service from '@/api/service'
+import { TagService } from '@/api/service'
 import SwaggyTag from '@/components/SwaggyTag.vue'
 
 export default {
@@ -13,7 +13,7 @@ export default {
   },
   async created () {
     this.loading = true
-    this.tags = await service.getAllTag()
+    this.tags = await TagService.getAllTag()
     this.loading = false
   }
 }

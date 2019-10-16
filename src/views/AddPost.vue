@@ -1,11 +1,11 @@
 <script>
-import service from '@/api/service'
+import { TagService, PostService } from '@/api/service'
 
 export default {
   name: 'AddPost',
 
   async created () {
-    this.tags = await service.getAllTag()
+    this.tags = await TagService.getAllTag()
   },
 
   methods: {
@@ -15,7 +15,7 @@ export default {
         return
       }
       this.pending = true
-      await service.addPost(this.form)
+      await PostService.addPost(this.form)
       this.pending = false
       this.$router.push('/')
     }

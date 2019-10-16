@@ -1,6 +1,6 @@
 <script>
 import SwaggyPost from '@/components/SwaggyPost.vue'
-import service from '@/api/service'
+import { PostService } from '@/api/service'
 
 export default {
   name: 'Newsfeed',
@@ -13,15 +13,15 @@ export default {
   },
   methods: {
     async getPostInfo (idx) {
-      return service.getPostById(idx)
+      return PostService.getPostById(idx)
     }
   },
   async created () {
     this.loading = true
-    this.posts = await service.getBriefPosts()
+    this.posts = await PostService.getBriefPosts()
 
     Promise.all(this.posts.map(v => {
-      return service.getPostById(v.idx)
+      return PostService.getPostById(v.idx)
     })).then(posts => {
       this.posts = posts
       this.loading = false
