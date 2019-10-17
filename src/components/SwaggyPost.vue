@@ -44,8 +44,8 @@ export default {
       this.showComments = !this.showComments
     },
 
-    deleteComment (idx) {
-      Swal.fire({
+    async deleteComment (idx) {
+      const result = await Swal.fire({
         title: '확인',
         text: '정말로 댓글을 지우시겠습니까?',
         type: 'warning',
@@ -53,12 +53,12 @@ export default {
         confirmButtonColor: '#5fae9f',
         cancelButtonText: '취소',
         confirmButtonText: '확인'
-      }).then(async result => {
-        if (result.value) {
-          await CommentService.deleteComment(idx)
-          await this.refresh()
-        }
       })
+
+      if (result.value) {
+        await CommentService.deleteComment(idx)
+        await this.refresh()
+      }
     },
 
     isMyComment (comment) {
