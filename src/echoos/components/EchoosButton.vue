@@ -7,11 +7,15 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    pending: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     emitClick () {
-      if (this.disabled) return
+      if (this.disabled || this.pending) return
       this.$emit('click')
     }
   }
@@ -20,16 +24,25 @@ export default {
 
 <template>
   <button
-    v-if="!disabled"
-    v-ripple="'rgba(255, 255, 255, .2)'"
-    class="button"
+    v-if="disabled"
+    class="button button-disabled"
     @click="emitClick"
   >
     <slot />
   </button>
+
+  <button
+    v-else-if="pending"
+    class="button button-pending"
+    @click="emitClick"
+  >
+    <slot />
+  </button>
+
   <button
     v-else
-    class="button button-disabled"
+    v-ripple="'rgba(255, 255, 255, .2)'"
+    class="button"
     @click="emitClick"
   >
     <slot />
@@ -58,6 +71,11 @@ export default {
 
   &-disabled {
     cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &-pending {
+    cursor: wait;
     opacity: 0.6;
   }
 }

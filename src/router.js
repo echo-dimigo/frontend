@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
 
-import Home from './views/Home.vue'
+import Newsfeed from './views/Newsfeed.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
 import Notification from './views/Notification.vue'
@@ -16,10 +16,10 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'newsfeed',
+      component: Newsfeed,
       meta: {
-        title: '홈',
+        title: '뉴스피드',
         needAuth: true
       }
     },

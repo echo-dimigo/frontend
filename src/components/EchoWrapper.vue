@@ -6,6 +6,7 @@ import EchoFooter from '@/components/EchoFooter.vue'
 import SwaggyProfile from '@/components/SwaggyProfile.vue'
 import SwaggyNavigation from '@/components/SwaggyNavigation.vue'
 import SwaggyNotification from '@/components/SwaggyNotification.vue'
+import SwaggyMeal from '@/components/SwaggyMeal.vue'
 
 export default {
   name: 'EchoWrapper',
@@ -13,6 +14,7 @@ export default {
     SwaggyProfile,
     SwaggyNavigation,
     SwaggyNotification,
+    SwaggyMeal,
     EchoFooter
   },
   computed: {
@@ -54,6 +56,9 @@ export default {
         <swaggy-notification
           class="container__right__notification"
         />
+        <swaggy-meal
+          class="container__right__meal"
+        />
       </div>
     </div>
     <echo-footer />
@@ -91,7 +96,11 @@ export default {
   &__right {
     width: 230px;
     height: 100%;
-    margin-bottom: 15px;
+
+    &__notification,
+    &__meal {
+      margin-bottom: 15px;
+    }
 
     @media (max-width: 900px) {
       width: 100%;
