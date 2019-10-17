@@ -20,12 +20,12 @@ export default {
     this.loading = true
     this.posts = await PostService.getBriefPosts()
 
-    Promise.all(this.posts.map(v => {
+    const posts = await Promise.all(this.posts.map(v => {
       return PostService.getPostById(v.idx)
-    })).then(posts => {
-      this.posts = posts
-      this.loading = false
-    })
+    }))
+
+    this.posts = posts
+    this.loading = false
   }
 }
 </script>
