@@ -16,27 +16,37 @@ export default {
   },
 
   async created () {
+    this.loading = true
+
     this.tags = await service.getAllTag()
     this.tags = this.tags.map(v => {
       v.notification = 0 // 나중에 알림 API 생기면 수정
-      v.to = `/page/${v.idx}`
+      v.to = `/tag/${v.idx}`
       return v
     })
+
+    this.loading = false
   },
 
   data () {
     return {
       tags: [],
+      loading: false,
       menus: [
         {
-          name: '구독 페이지 전체',
+          name: '뉴스피드',
           notification: 0,
-          to: '/page/subscribed'
+          to: '/'
         },
         {
-          name: '페이지 전체',
+          name: '구독 태그 전체',
           notification: 0,
-          to: '/page/all'
+          to: '/tag/subscribed'
+        },
+        {
+          name: '태그 전체',
+          notification: 0,
+          to: '/tag/all'
         },
         {
           name: '클립한 글',
@@ -76,12 +86,19 @@ export default {
           {{ item.name }}
         </span>
       </div>
+      <content-placeholders
+        v-if="loading"
+        class="nav__item"
+        :rounded="true"
+      >
+        <content-placeholders-text :lines="5" />
+      </content-placeholders>
     </div>
     <div
       @click="push('/page/all')"
       class="nav__all-page"
     >
-      구독 페이지 전체 보기
+      구독 태그 전체 보기
     </div>
   </nav>
 </template>
@@ -97,6 +114,7 @@ export default {
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
   &__item {
+    cursor: pointer;
     padding: 10px 0 10px 15px;
     color: $dark-gray;
     width: 85%;
@@ -108,6 +126,8 @@ export default {
       border-bottom-right-radius: 25px;
 
       color: $white;
+
+      transition: all 0.5s;
     }
 
     &__box {
@@ -116,6 +136,7 @@ export default {
 
     &__title {
       user-select: none;
+      font-weight: 600;
     }
 
     &__badge {
@@ -151,6 +172,7 @@ export default {
     border-top: solid 1.5px rgba(21, 19, 19, 0.05);
     user-select: none;
     padding: 1em 0;
+    font-weight: 600;
   }
 }
 </style>

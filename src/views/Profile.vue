@@ -44,6 +44,7 @@ export default {
 
     <echoos-button
       class="profile__apply"
+      disabled
     >
       적용하기
     </echoos-button>

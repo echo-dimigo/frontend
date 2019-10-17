@@ -63,4 +63,8 @@ export default {
 
   outline: none;
 }
+
+.input[type="password"] {
+  font-family: 'pass', 'Roboto', Helvetica, Arial, sans-serif ;
+}
 </style>

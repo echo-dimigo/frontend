@@ -1,8 +1,16 @@
 <script>
-import Brand from '@/assets/logo.png'
+import Brand from '@/assets/images/logo.png'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'EchoHeader',
+
+  computed: {
+    ...mapGetters(
+      ['isAuth']
+    )
+  },
+
   data () {
     return {
       Brand
@@ -19,13 +27,14 @@ export default {
         class="header__brand__logo"
         :src="Brand"
       >
-      <span class="header__brand__name">
+      <!-- <span class="header__brand__name">
         ECHO
-      </span>
+      </span> -->
     </div>
   </router-link>
   <div class="header__search">
     <echoos-input
+      v-if="isAuth"
       class="header__search__input"
       placeholder="🔎 작성자, 게시물을 검색해보세요"
     />
@@ -35,7 +44,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../scss/colors.scss';
-@import url('https://fonts.googleapis.com/css?family=Jua&display=swap');
 
 a {
   text-decoration: none;
@@ -76,15 +84,16 @@ a {
       }
     }
 
-    &__name {
-      color: $brand;
-      user-select: none;
+    // &__name {
+    //   color: $brand;
+    //   user-select: none;
 
-      margin-left: 0.3em;
+    //   margin-top: 0.3rem;
+    //   margin-left: 0.3em;
 
-      font-family: 'Jua', sans-serif;
-      font-size: 1.5em;
-    }
+    //   font-family: 'Black Han Sans', sans-serif;
+    //   font-size: 1.5em;
+    // }
   }
 
   &__search {

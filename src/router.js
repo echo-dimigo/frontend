@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
 
-import Home from './views/Home.vue'
+import Newsfeed from './views/Newsfeed.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
+import Notification from './views/Notification.vue'
+import TagList from './views/TagList.vue'
 
 Vue.use(Router)
 
@@ -14,9 +16,10 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'newsfeed',
+      component: Newsfeed,
       meta: {
+        title: '뉴스피드',
         needAuth: true
       }
     },
@@ -30,6 +33,24 @@ const router = new Router({
       }
     },
     {
+      path: '/post/new',
+      name: 'addPost',
+      component: AddPost,
+      meta: {
+        title: '새 글 등록',
+        needAuth: true
+      }
+    },
+    {
+      path: '/notification',
+      name: 'notification',
+      component: Notification,
+      meta: {
+        title: '알림 모아보기',
+        needAuth: true
+      }
+    },
+    {
       path: '/profile',
       name: 'profile',
       component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
@@ -39,11 +60,11 @@ const router = new Router({
       }
     },
     {
-      path: '/post/new',
-      name: 'addPost',
-      component: AddPost,
+      path: '/tag/all',
+      name: 'tagList',
+      component: TagList,
       meta: {
-        title: '새 글 등록',
+        title: '전체 태그 보기',
         needAuth: true
       }
     },
@@ -59,13 +80,15 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.needAuth && !store.state.isAuth) {
+  if (to.meta.needAuth && !store.getters.isAuth) {
     next('/auth/login')
-  } else if (to.meta.forbidAuth && store.state.isAuth) {
+  } else if (to.meta.forbidAuth && store.getters.isAuth) {
     next('/')
   } else {
     if (to.meta.title) {
       document.title = `ECHO - ${to.meta.title}`
+    } else {
+      document.title = 'ECHO'
     }
     next()
   }

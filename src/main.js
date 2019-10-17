@@ -4,18 +4,26 @@ import Ripple from 'vue-ripple-directive'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from 'axios'
+import axios from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
 import 'dimigoincon'
+import VueContentPlaceholders from 'vue-content-placeholders'
+import VueToast from 'vue-toast-notification'
+import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
-axios.defaults.baseURL = 'https://dev-api.dimigo.in'
+axios.Config()
 
+Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
+Vue.use(VueToast, {
+  position: 'top-right'
+})
+
 if (localStorage.accessToken) {
-  store.commit('login', localStorage.accessToken)
+  store.commit('login', localStorage)
 }
 
 Ripple.zIndex = 55

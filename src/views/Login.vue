@@ -3,16 +3,25 @@ export default {
   name: 'Login',
 
   methods: {
-    login () {
-      this.$store.dispatch('login', this.form)
-      setInterval(() => {
+    async login () {
+      if (!this.form.id || !this.form.password) {
+        this.$toast.error('모든 입력란을 채워주세요.')
+        return
+      }
+      this.pending = true
+      try {
+        await this.$store.dispatch('login', this.form)
         this.$router.push('/')
-      }, 1000)
+      } catch (e) {
+        this.$toast.error('로그인을 실패했습니다.')
+      }
+      this.pending = false
     }
   },
 
   data () {
     return {
+      pending: false,
       form: {
         id: null,
         password: null
@@ -41,6 +50,7 @@ export default {
       />
       <echoos-button
         @click="login"
+        :pending="pending"
       >
         로그인
       </echoos-button>
@@ -52,12 +62,14 @@ export default {
 @import '../scss/colors.scss';
 
 .login {
+  align-self: center;
   padding: 20px;
   background-color: $white;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   height: 50vh;
+  max-width: 650px;
 
   &__form {
     flex: 1;
@@ -68,13 +80,10 @@ export default {
 
     &__input {
       width: 50%;
+      margin-bottom: 15px;
 
       @media (max-width: 900px) {
         width: 85%;
-      }
-
-      &:not(:last-child) {
-        margin-bottom: 15px;
       }
     }
   }

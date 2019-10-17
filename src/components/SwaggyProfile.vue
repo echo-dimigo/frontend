@@ -34,9 +34,19 @@ export default {
       <span class="profile__info__name">
         {{ user.name }}
       </span>
-      <span class="profile__info__class">
+      <span
+        v-if="user.type === 'S'"
+        class="profile__info__class"
+      >
         {{ user.grade }}학년
         {{ user.klass }}반
+      </span>
+
+      <span
+        v-else
+        class="profile__info__class"
+      >
+        선생님
       </span>
     </div>
     <div class="profile__tool">
@@ -81,6 +91,7 @@ export default {
       display: block;
       font-size: 1.5rem;
       margin-bottom: 7px;
+      font-weight: 700;
     }
 
     &__class {
@@ -101,6 +112,7 @@ export default {
   }
 
   &__tool {
+    cursor: pointer;
     width: 80%;
     display: flex;
     justify-content: space-around;

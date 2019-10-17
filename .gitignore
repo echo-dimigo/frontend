@@ -19,3 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Cypress
+test/e2e/screenshots
+test/e2e/videos

@@ -5,6 +5,8 @@ import locale from 'date-fns/locale/ko'
 import service from '@/api/service'
 import { mapGetters } from 'vuex'
 
+import Swal from 'sweetalert2'
+
 export default {
   name: 'SwaggyPost',
 
@@ -12,27 +14,51 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    commentsPreviewCount: {
+      type: Number,
+      default: 3
     }
   },
 
   computed: {
     ...mapGetters([
       'user'
-    ])
+    ]),
+
+    reversedComments () {
+      return this.currentPost.comments.slice().reverse()
+    },
+
+    previewComments () {
+      return this.reversedComments.slice(0, this.commentsPreviewCount)
+    }
   },
 
   methods: {
     async refresh () {
-      this.post = await service.getPostById(this.post.idx)
+      this.currentPost = await service.getPostById(this.post.idx)
     },
 
     toggleComment () {
       this.showComments = !this.showComments
     },
 
-    async deleteComment (idx) {
-      await service.deleteComment(idx)
-      await this.refresh()
+    deleteComment (idx) {
+      Swal.fire({
+        title: '확인',
+        text: '정말로 댓글을 지우시겠습니까?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#5fae9f',
+        cancelButtonText: '취소',
+        confirmButtonText: '확인'
+      }).then(async result => {
+        if (result.value) {
+          await service.deleteComment(idx)
+          await this.refresh()
+        }
+      })
     },
 
     isMyComment (comment) {
@@ -48,11 +74,21 @@ export default {
       }
     },
 
+    expandComment () {
+      this.showFullComments = true
+    },
+
     async addComment () {
+      if (!this.commentForm.content || !this.commentForm.content.trim()) {
+        this.$toast.error('댓글을 입력해 주세요.')
+        return
+      }
+      this.commentPending = true
+      this.showComments = true
       await service.addComment(this.commentForm)
+      this.commentPending = false
       await this.refresh()
       this.initForm()
-      this.showComments = true
     }
   },
 
@@ -64,17 +100,25 @@ export default {
 
   created () {
     this.initForm()
-    setInterval(() => {
+    this.refresher = setInterval(() => {
       this.refresh()
     }, 10000)
   },
 
   data () {
     return {
+      currentPost: this.post,
+      refresher: () => {},
       comment: null,
-      showComments: false,
-      commentForm: {}
+      showComments: true,
+      showFullComments: false,
+      commentForm: {},
+      commentPending: false
     }
+  },
+
+  destroyed () {
+    clearInterval(this.refresher)
   }
 }
 </script>
@@ -85,25 +129,27 @@ export default {
       <div class="post__info__image" />
       <div class="post__info__text">
         <span class="post__info__name">
-          {{ post.writer.name }}
+          {{ currentPost.writer.name }}
         </span>
         <span class="post__info__date">
-          {{ post.date | formatDate }}
+          {{ currentPost.date | formatDate }}
         </span>
       </div>
     </div>
     <div class="post__content">
       <span class="post__content__title">
-        {{ post.title }}
+        {{ currentPost.title }}
       </span>
-      {{ post.content }}
+      <pre class="post__content__text" >
+        {{ currentPost.content }}
+      </pre>
     </div>
     <div
       @click="toggleComment"
       class="post__reaction"
     >
       <span class="post__reaction__comment">
-        댓글 {{ post.comments.length }}개
+        댓글 {{ currentPost.comments.length }}개
       </span>
     </div>
     <div
@@ -112,7 +158,7 @@ export default {
     >
       <div
         :key="`comment-${i}`"
-        v-for="(comment, i) in post.comments"
+        v-for="(comment, i) in showFullComments ? reversedComments : previewComments"
         class="post__comment"
       >
         <div class="post__comment__photo" />
@@ -130,21 +176,30 @@ export default {
               class="post__comment__tool icon-delete"
             />
           </div>
-          <span class="post__comment__info__date">
+          <span class="post__comment__info__content">
             {{ comment.content }}
           </span>
         </div>
+      </div>
+      <div
+        v-show="currentPost.comments.length > commentsPreviewCount && !showFullComments"
+        @click="expandComment"
+        class="post__comment__more"
+      >
+        댓글 더보기
       </div>
     </div>
     <div class="post__add-comment">
       <echoos-input
         v-model="commentForm.content"
+        @enter="addComment"
         placeholder="댓글을 입력하세요"
         class="post__add-comment__input"
       />
       <echoos-button
         @click="addComment"
         class="post__add-comment__button"
+        :pending="commentPending"
       >
         댓글 달기
       </echoos-button>
@@ -161,13 +216,13 @@ export default {
 
   background-color: $white;
 
-  padding: 6px 10px;
+  padding: 15px 15px 0;
 
   &__info {
     display: flex;
     align-items: center;
-    padding: 6px 0;
-    border-bottom: solid 2px rgba(21, 19, 19, 0.05);
+    padding: 0 0 10px;
+    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__image {
       width: 3.5em;
@@ -177,27 +232,40 @@ export default {
       background-repeat: no-repeat;
       border-radius: 50%;
       border: solid 1px rgba(21, 19, 19, 0.05);
-      margin-right: 7px;
+      margin-right: 10px;
     }
 
     &__name {
-      font-size: 1.3rem;
       display: block;
+      margin-bottom: 2px;
+      font-size: 1.3rem;
+      font-weight: 700;
     }
 
     &__date {
+      font-size: 0.8rem;
       color: $dark-gray;
     }
   }
 
   &__content {
-    padding: 15px 6px;
-    line-height: 25px;
+    padding: 12px 6px;
+    padding-top: 15px;
+    word-break: break-word;
 
     &__title {
       display: block;
       line-height: 40px;
       font-weight: bold;
+      color: black;
+    }
+
+    &__text {
+      line-height: 1.5;
+      white-space: pre-line;
+      word-wrap: break-word;
+      font-family: inherit;
+      color: #151313;
     }
   }
 
@@ -205,9 +273,10 @@ export default {
     width: 100%;
     height: 2rem;
     user-select: none;
-    border-bottom: solid 2px rgba(21, 19, 19, 0.05);
+    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__comment {
+      cursor: pointer;
       float: right;
       color: $dark-gray;
     }
@@ -217,37 +286,57 @@ export default {
     padding: 13px 10px;
     display: flex;
     align-items: center;
+    align-content: center;
     border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
     &__photo {
+      align-self: flex-start;
       width: 3rem;
       height: 3rem;
       border: 2px solid $gray;
       border-radius: 50%;
+      margin-right: 8px;
     }
 
     &__content {
-      margin-left: 7px;
       flex: 1;
+      word-break: break-word;
     }
 
     &__info {
-      line-height: 30px;
+      margin-bottom: 2px;
 
       &__writer {
         font-size: 1.1rem;
+        font-weight: 700;
       }
 
       &__date {
+        font-size: 0.9rem;
         color: $dark-gray;
-        font-size: 0.8rem;
+      }
+
+      &__content {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $dark-gray;
       }
     }
 
     &__tool {
+      cursor: pointer;
       float: right;
       margin-right: 6px;
       color: $dark-gray;
+    }
+
+    &__more {
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+
+      color: $brand;
+      font-weight: 600;
     }
   }
 

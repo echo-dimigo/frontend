@@ -5,6 +5,25 @@ const CreateTagOption = tag => ({
   'option': tag.option
 })
 
+export const Token = tokens => ({
+  accessToken: tokens['token'],
+  refreshToken: tokens['refresh_token']
+})
+
+export const User = user => ({
+  idx: user['idx'],
+  type: user['user_type'],
+  email: user['email'],
+  id: user['id'],
+  name: user['name'],
+  grade: user['grade'],
+  klass: user['klass'],
+  number: user['number'],
+  photo: user['photo'],
+  serial: user['serial'],
+  ssoToken: user['sso_token']
+})
+
 export const Post = post => ({
   idx: post['idx'],
   title: post['title'],
@@ -45,4 +64,14 @@ export const CreateComment = comment => ({
   'target_type': comment.targetType,
   'target_idx': comment.targetIdx,
   'content': comment.content
+})
+
+export const InvitateUser = form => ({
+  'user_idx': form.userIdx,
+  'tag_idx': form.tagIdx,
+  'admin': form.isAdmin,
+  'modification_allowed': form.permission.modification,
+  'invitation_allowed': form.permission.invitation,
+  'post_allowed': form.permission.post,
+  'acceptance_allowed': form.permission.acceptance
 })

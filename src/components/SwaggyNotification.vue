@@ -38,47 +38,51 @@ export default {
         ({{ noties.length }})
       </h3>
       <div class="noti__header__expand">
-        <i :class="{
+        <span :class="{
           'noti__header__expand__icon': true,
-          'fas': true,
-          'fa-caret-up': expand,
-          'fa-caret-down': !expand
+          'icon-arrow-up': expand,
+          'icon-arrow-down': !expand
         }" />
       </div>
     </div>
-    <template v-if="expand">
-      <div
-        v-if="noties.length"
-        class="noti__list"
-      >
+    <transition-group name="expand-toggle">
+      <template v-if="expand">
         <div
-          :key="`noti-${i}`"
-          v-for="(noti, i) in noties"
-          class="noti__list__item"
+          v-if="noties.length"
+          key="noti-list"
+          class="noti__list"
         >
-          <span class="noti__list__item__title">
-            {{ noti.title }}
-          </span>
-          <span class="noti__list__item__content">
-            {{ noti.content }}
-          </span>
+          <div
+            :key="`noti-${i}`"
+            v-for="(noti, i) in noties"
+            class="noti__list__item"
+          >
+            <span class="noti__list__item__title">
+              {{ noti.title }}
+            </span>
+            <span class="noti__list__item__content">
+              {{ noti.content }}
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div
-        v-else
-        class="noti__list noti__list-empty"
-      >
-        아직 도착한 알림이 없습니다.
-      </div>
+        <div
+          v-else
+          key="noti-list"
+          class="noti__list noti__list-empty"
+        >
+          아직 도착한 알림이 없습니다.
+        </div>
 
-      <div
-        @click="push('/notification')"
-        class="noti__button"
-      >
-        알림 모아보기
-      </div>
-    </template>
+        <div
+          @click="push('/notification')"
+          key="noti-button"
+          class="noti__button"
+        >
+          알림 모아보기
+        </div>
+      </template>
+    </transition-group>
   </div>
 </template>
 
@@ -142,12 +146,26 @@ export default {
   }
 
   &__button {
+    cursor: pointer;
     padding: 1em 0;
 
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
+
+    font-weight: 600;
   }
 }
+
+.expand-toggle-enter-active, .expand-toggle-leave-active {
+  transition: all 400ms ease;
+}
+
+.expand-toggle-enter, .expand-toggle-leave-to {
+  line-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 </style>

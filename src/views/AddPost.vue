@@ -10,13 +10,20 @@ export default {
 
   methods: {
     async addPost () {
+      if (!this.form.title || !this.form.content) {
+        this.$toast.error('제목과 내용을 채워주세요.')
+        return
+      }
+      this.pending = true
       await service.addPost(this.form)
+      this.pending = false
       this.$router.push('/')
     }
   },
 
   data () {
     return {
+      pending: false,
       form: {
         title: null,
         content: null,
@@ -46,6 +53,7 @@ export default {
     <echoos-button
       @click="addPost"
       class="post__button"
+      :pending="pending"
     >
       등록하기
     </echoos-button>

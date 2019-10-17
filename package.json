@@ -14,19 +14,23 @@
     "dimigoincon": "^2.5.3",
     "jwt-decode": "^2.2.0",
     "register-service-worker": "^1.6.2",
+    "sweetalert2": "^8.16.3",
     "unix-timestamp": "^0.2.0",
     "vue": "^2.6.10",
+    "vue-content-placeholders": "^0.2.1",
     "vue-ripple-directive": "^2.0.1",
     "vue-router": "^3.0.3",
     "vue-swal": "^1.0.0",
+    "vue-toast-notification": "0.0.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-plugin-pwa": "^3.10.0",
-    "@vue/cli-service": "^3.10.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-standard": "^4.0.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -66,5 +70,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/echo-dimigo/echo-front.git"
   }
 }
