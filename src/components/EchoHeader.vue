@@ -27,9 +27,6 @@ export default {
         class="header__brand__logo"
         :src="Brand"
       >
-      <!-- <span class="header__brand__name">
-        ECHO
-      </span> -->
     </div>
   </router-link>
   <div class="header__search">
