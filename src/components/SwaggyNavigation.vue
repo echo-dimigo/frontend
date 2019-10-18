@@ -147,7 +147,7 @@ export default {
       text-align: center;
       vertical-align: middle;
       margin-right: 5px;
-      background-color: $banana;
+      background-color: $baby-pink;
 
       &-current {
         background-color: $white;
