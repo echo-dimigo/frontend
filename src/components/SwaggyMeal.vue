@@ -1,11 +1,11 @@
 <script>
-import service from '@/api/service'
+import { DimigoInService } from '@/api/service'
 
 export default {
   name: 'SwaggyMeal',
 
   async created () {
-    this.meal = await service.getTodayMeal()
+    this.meal = await DimigoInService.getTodayMeal()
   },
 
   methods: {

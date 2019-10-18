@@ -27,9 +27,6 @@ export default {
         class="header__brand__logo"
         :src="Brand"
       >
-      <!-- <span class="header__brand__name">
-        ECHO
-      </span> -->
     </div>
   </router-link>
   <div class="header__search">
@@ -83,17 +80,6 @@ a {
         height: 2rem;
       }
     }
-
-    // &__name {
-    //   color: $brand;
-    //   user-select: none;
-
-    //   margin-top: 0.3rem;
-    //   margin-left: 0.3em;
-
-    //   font-family: 'Black Han Sans', sans-serif;
-    //   font-size: 1.5em;
-    // }
   }
 
   &__search {

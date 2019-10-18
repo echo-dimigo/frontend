@@ -7,7 +7,10 @@ export default {
   computed: {
     ...mapGetters([
       'user'
-    ])
+    ]),
+    photoURI () {
+      return `https://api.dimigo.hs.kr/user_photo/${this.user.photo}`
+    }
   },
 
   methods: {
@@ -26,9 +29,7 @@ export default {
 <template>
   <div class="profile">
     <div class="profile__info__image"
-      :style="{
-        'background-image': `url('https://api.dimigo.hs.kr/user_photo/${user.photo}')`
-      }"
+      :style="{ 'background-image': `url(${photoURI})` }"
     />
     <div class="profile__info">
       <span class="profile__info__name">

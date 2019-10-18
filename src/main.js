@@ -4,7 +4,7 @@ import Ripple from 'vue-ripple-directive'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import axios from '@/api/axios'
+import { configAxios } from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
@@ -14,7 +14,8 @@ import VueToast from 'vue-toast-notification'
 import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
-axios.Config()
+
+configAxios()
 
 Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)

@@ -10,7 +10,8 @@ import SwaggyMeal from '@/components/SwaggyMeal.vue'
 
 export default {
   name: 'EchoWrapper',
-  components: { EchoHeader,
+  components: {
+    EchoHeader,
     SwaggyProfile,
     SwaggyNavigation,
     SwaggyNotification,

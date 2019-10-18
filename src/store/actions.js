@@ -1,9 +1,9 @@
-import service from '@/api/service'
+import { AuthService } from '@/api/service'
 
 export default {
   async login (state, form) {
     try {
-      const tokens = await service.Login(form)
+      const tokens = await AuthService.Login(form)
       this.commit('login', tokens)
     } catch (e) {
       throw e
@@ -15,7 +15,7 @@ export default {
   },
 
   async refreshAccessToken (state, refreshToken) {
-    const refreshedToken = await service.refreshAccessToken(refreshToken)
+    const refreshedToken = await AuthService.refreshAccessToken(refreshToken)
     state.commit('login', {
       accessToken: refreshedToken,
       refreshToken: refreshToken
