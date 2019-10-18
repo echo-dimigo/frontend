@@ -1,8 +1,13 @@
 <script>
 import { TagService, PostService } from '@/api/service'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   name: 'AddPost',
+
+  components: {
+    VueEditor
+  },
 
   async created () {
     this.tags = await TagService.getAllTag()
@@ -42,12 +47,10 @@ export default {
       class="post__input"
       v-model="form.title"
     />
-    <echoos-big-input
-      placeholder="새 글 내용"
-      class="post__input post__input-large"
-      v-model="form.content"
-    />
-    <span class="post__input">
+    <div class="post__input post__input-large">
+      <vue-editor v-model="form.content" />
+    </div>
+    <span class="post__input post__input__helper">
       태그 기능은 준비 중입니다.
     </span>
     <echoos-button
@@ -74,8 +77,12 @@ export default {
     margin-bottom: 20px;
 
     &-large {
-      width: 85%;
+      width: 100%;
       height: 300px;
+    }
+
+    &__helper {
+      margin-top: 30px;
     }
   }
 
