@@ -1,4 +1,8 @@
 export default {
   userInfo: {},
-  accessToken: null
+  accessToken: null,
+  expand: {
+    notification: true,
+    meal: true
+  }
 }
