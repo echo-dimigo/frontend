@@ -8,7 +8,9 @@ export default {
     ...mapGetters([
       'user'
     ]),
-    photoURI: () => `https://api.dimigo.hs.kr/user_photo/${this.user.photo}`
+    photoURI () {
+      return `https://api.dimigo.hs.kr/user_photo/${this.user.photo}`
+    }
   },
 
   methods: {
