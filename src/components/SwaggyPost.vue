@@ -140,9 +140,7 @@ export default {
       <span class="post__content__title">
         {{ currentPost.title }}
       </span>
-      <pre class="post__content__text" >
-        {{ currentPost.content }}
-      </pre>
+      <span v-html="currentPost.content" />
     </div>
     <div
       @click="toggleComment"
