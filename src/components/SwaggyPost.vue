@@ -5,10 +5,12 @@ import locale from 'date-fns/locale/ko'
 import { PostService, CommentService } from '@/api/service'
 import { mapGetters } from 'vuex'
 
-import Swal from 'sweetalert2'
+import SwaggyComment from '@/components/SwaggyComment'
 
 export default {
   name: 'SwaggyPost',
+
+  components: { SwaggyComment },
 
   props: {
     post: {
@@ -42,27 +44,6 @@ export default {
 
     toggleComment () {
       this.showComments = !this.showComments
-    },
-
-    async deleteComment (idx) {
-      const result = await Swal.fire({
-        title: '확인',
-        text: '정말로 댓글을 지우시겠습니까?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#5fae9f',
-        cancelButtonText: '취소',
-        confirmButtonText: '확인'
-      })
-
-      if (result.value) {
-        await CommentService.deleteComment(idx)
-        await this.refresh()
-      }
-    },
-
-    isMyComment (comment) {
-      return comment.writer.idx === this.user.idx
     },
 
     initForm () {
@@ -154,31 +135,13 @@ export default {
       v-show="showComments"
       class="post__comment__list"
     >
-      <div
+      <swaggy-comment
         :key="`comment-${i}`"
         v-for="(comment, i) in showFullComments ? reversedComments : previewComments"
+        :comment="comment"
         class="post__comment"
-      >
-        <div class="post__comment__photo" />
-        <div class="post__comment__content">
-          <div class="post__comment__info">
-            <span class="post__comment__info__writer">
-              {{ comment.writer.name }}
-            </span>
-            <span class="post__comment__info__date">
-              {{ comment.wroteDate | formatDate }}
-            </span>
-            <span
-              v-if="isMyComment(comment)"
-              @click="deleteComment(comment.idx)"
-              class="post__comment__tool icon-delete"
-            />
-          </div>
-          <span class="post__comment__info__content">
-            {{ comment.content }}
-          </span>
-        </div>
-      </div>
+        @refresh="refresh"
+      />
       <div
         v-show="currentPost.comments.length > commentsPreviewCount && !showFullComments"
         @click="expandComment"
@@ -280,78 +243,20 @@ export default {
     }
   }
 
-  &__comment {
-    padding: 13px 10px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
-
-    &__photo {
-      align-self: flex-start;
-      width: 3rem;
-      height: 3rem;
-      border: 2px solid $gray;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-
-    &__content {
-      flex: 1;
-      word-break: break-word;
-    }
-
-    &__info {
-      margin-bottom: 2px;
-
-      &__writer {
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
-
-      &__date {
-        font-size: 0.9rem;
-        color: $dark-gray;
-      }
-
-      &__content {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: $dark-gray;
-      }
-    }
-
-    &__tool {
-      cursor: pointer;
-      float: right;
-      margin-right: 6px;
-      color: $dark-gray;
-    }
-
-    &__more {
-      cursor: pointer;
-      margin-left: 10px;
-      margin-top: 10px;
-
-      color: $brand;
-      font-weight: 600;
-    }
-  }
-
   &__add-comment {
-    padding: 15px 6px;
-    display: flex;
-    justify-content: space-between;
+  padding: 15px 6px;
+  display: flex;
+  justify-content: space-between;
 
-    &__input {
-      flex: 1;
-      margin-right: 5px;
-      display: inline-block;
+  &__input {
+    flex: 1;
+    margin-right: 5px;
+    display: inline-block;
 
-      @media (max-width: 900px) {
-        width: 50%;
-      }
+    @media (max-width: 900px) {
+      width: 50%;
     }
   }
+}
 }
 </style>
