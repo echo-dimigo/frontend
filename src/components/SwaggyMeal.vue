@@ -16,7 +16,7 @@ export default {
 
   filters: {
     separateMeal (val) {
-      if (!val) return '급식 정보를 로딩 중입니다.'
+      if (!val) return '식단 정보가 학교 홈페이지에 업로드되어 있지 않습니다.'
       return val.replace(/\//gi, ' | ')
     }
   },

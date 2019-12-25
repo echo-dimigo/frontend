@@ -24,7 +24,7 @@ export const configAxios = () => {
         } catch (e) {
           Vue.$toast.error('리프레시 토큰이 만료되어 재로그인이 필요합니다.')
         }
-      } else {
+      } else if (error.response.status !== 404) {
         Vue.$toast.error('작업을 수행하던 중 에러가 발생했습니다.')
         return Promise.reject(error)
       }
