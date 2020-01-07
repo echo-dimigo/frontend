@@ -8,7 +8,7 @@ node_modules
 /dist
 
 # Env files
-.env.*
+.env.*[^.example]
 
 # Log files
 npm-debug.log*
