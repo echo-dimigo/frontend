@@ -29,6 +29,7 @@ export default {
       const path = this.$route.path
 
       return path === '/' ||
+        path === '/dashboard' ||
         path.includes('/tag') ||
         path.includes('/post')
     }

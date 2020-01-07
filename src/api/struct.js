@@ -75,3 +75,15 @@ export const InviteUser = form => ({
   'post_allowed': form.permission.post,
   'acceptance_allowed': form.permission.acceptance
 })
+
+export const Ingang = ingang => ({
+  idx: ingang['idx'],
+  day: ingang['day'],
+  title: ingang['title'],
+  time: ingang['time'],
+  startDate: toDate(ingang['request_start_date']),
+  endDate: toDate(ingang['request_end_date']),
+  status: ingang['status'],
+  present: ingang['present'],
+  maxUser: ingang['max_user']
+})

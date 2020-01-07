@@ -34,6 +34,11 @@ export default {
       loading: false,
       menus: [
         {
+          name: '대시보드',
+          notification: 0,
+          to: '/dashboard'
+        },
+        {
           name: '뉴스피드',
           notification: 0,
           to: '/'

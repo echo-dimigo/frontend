@@ -18,6 +18,15 @@ const router = new Router({
       }
     },
     {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('./views/Dashboard.vue'),
+      meta: {
+        title: '대시보드',
+        needAuth: true
+      }
+    },
+    {
       path: '/auth/login',
       name: 'login',
       component: () => import('./views/Login.vue'),
