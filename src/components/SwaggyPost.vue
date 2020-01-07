@@ -243,20 +243,31 @@ export default {
     }
   }
 
-  &__add-comment {
-  padding: 15px 6px;
-  display: flex;
-  justify-content: space-between;
+  &__comment {
+    &:not(:last-child) {
+      border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
+    }
 
-  &__input {
-    flex: 1;
-    margin-right: 5px;
-    display: inline-block;
-
-    @media (max-width: 900px) {
-      width: 50%;
+    &__more {
+      color: $dark-gray;
+      padding-top: 15px;
     }
   }
-}
+
+  &__add-comment {
+    padding: 15px 6px;
+    display: flex;
+    justify-content: space-between;
+
+    &__input {
+      flex: 1;
+      margin-right: 5px;
+      display: inline-block;
+
+      @media (max-width: 900px) {
+        width: 50%;
+      }
+    }
+  }
 }
 </style>

@@ -87,7 +87,6 @@ export default {
   display: flex;
   align-items: center;
   align-content: center;
-  border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
 
   &__photo {
     align-self: flex-start;
