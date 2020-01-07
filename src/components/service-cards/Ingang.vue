@@ -61,8 +61,6 @@ export default {
 @import '../../scss/colors.scss';
 
 .ingang {
-  border-radius: 6px;
-  border: solid 1.5px rgba(21, 19, 19, 0.1);
   padding: 6px 15px;
 
   &__icon {

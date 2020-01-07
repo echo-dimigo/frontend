@@ -32,6 +32,6 @@ export default {
   display: grid;
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 </style>
