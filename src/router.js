@@ -5,7 +5,6 @@ import store from '@/store'
 import Newsfeed from './views/Newsfeed.vue'
 import Login from './views/Login.vue'
 import AddPost from './views/AddPost.vue'
-import Notification from './views/Notification.vue'
 import TagList from './views/TagList.vue'
 
 Vue.use(Router)
@@ -44,7 +43,7 @@ const router = new Router({
     {
       path: '/notification',
       name: 'notification',
-      component: Notification,
+      component: () => import(/* webpackChunkName: "notification" */ './views/Notification.vue'),
       meta: {
         title: '알림 모아보기',
         needAuth: true
