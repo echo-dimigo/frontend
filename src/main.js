@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Ripple from 'vue-ripple-directive'
 
 import App from './App.vue'
 import router from './router'
@@ -8,9 +7,11 @@ import { configAxios } from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
-import 'dimigoincon'
 import VueContentPlaceholders from 'vue-content-placeholders'
 import VueToast from 'vue-toast-notification'
+import VueRipple from 'vue-ripple-directive'
+
+import 'dimigoincon'
 import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
@@ -27,8 +28,8 @@ if (localStorage.accessToken) {
   store.commit('login', localStorage)
 }
 
-Ripple.zIndex = 55
-Vue.directive('ripple', Ripple)
+VueRipple.zIndex = 55
+Vue.directive('ripple', VueRipple)
 
 new Vue({
   router,
