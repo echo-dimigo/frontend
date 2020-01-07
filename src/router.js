@@ -2,11 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
 
-import Newsfeed from './views/Newsfeed.vue'
-import Login from './views/Login.vue'
-import AddPost from './views/AddPost.vue'
-import TagList from './views/TagList.vue'
-
 Vue.use(Router)
 
 const router = new Router({
@@ -16,7 +11,7 @@ const router = new Router({
     {
       path: '/',
       name: 'newsfeed',
-      component: Newsfeed,
+      component: () => import('./views/Newsfeed.vue'),
       meta: {
         title: '뉴스피드',
         needAuth: true
@@ -25,7 +20,7 @@ const router = new Router({
     {
       path: '/auth/login',
       name: 'login',
-      component: Login,
+      component: () => import('./views/Login.vue'),
       meta: {
         title: '로그인',
         forbidAuth: true
@@ -34,9 +29,18 @@ const router = new Router({
     {
       path: '/post/new',
       name: 'addPost',
-      component: AddPost,
+      component: () => import('./views/AddPost.vue'),
       meta: {
         title: '새 글 등록',
+        needAuth: true
+      }
+    },
+    {
+      path: '/tag/all',
+      name: 'tagList',
+      component: () => import('./views/TagList.vue'),
+      meta: {
+        title: '전체 태그 보기',
         needAuth: true
       }
     },
@@ -55,15 +59,6 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
       meta: {
         title: '프로필 관리',
-        needAuth: true
-      }
-    },
-    {
-      path: '/tag/all',
-      name: 'tagList',
-      component: TagList,
-      meta: {
-        title: '전체 태그 보기',
         needAuth: true
       }
     },
