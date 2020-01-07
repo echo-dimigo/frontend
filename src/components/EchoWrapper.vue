@@ -24,15 +24,7 @@ export default {
   computed: {
     ...mapGetters([
       'isAuth'
-    ]),
-    isTagRoute () {
-      const path = this.$route.path
-
-      return path === '/' ||
-        path === '/dashboard' ||
-        path.includes('/tag') ||
-        path.includes('/post')
-    }
+    ])
   }
 }
 </script>
@@ -49,7 +41,6 @@ export default {
           class="container__left__profile"
         />
         <swaggy-navigation
-          v-show="isTagRoute"
           class="container__left__navigation"
         />
       </div>
