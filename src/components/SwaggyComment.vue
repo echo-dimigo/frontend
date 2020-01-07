@@ -41,7 +41,8 @@ export default {
         text: '정말로 댓글을 지우시겠습니까?',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#5fae9f',
+        confirmButtonColor: '#c5593b',
+        cancelButtonColor: '#5fae9f',
         cancelButtonText: '취소',
         confirmButtonText: '확인'
       })
