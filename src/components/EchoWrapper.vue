@@ -56,6 +56,16 @@ export default {
       >
         <swaggy-notification
           class="container__right__notification"
+          :noties="[
+            {
+              title: '안내사항',
+              content: '알림은 5초 간격으로 자동으로 새로고침됩니다.'
+            },
+            {
+              title: '안내사항',
+              content: '홈페이지에 식단 정보가 없는 경우 ECHO에서도 식단 정보가 보이지 않습니다'
+            }
+          ]"
         />
         <swaggy-meal
           class="container__right__meal"
