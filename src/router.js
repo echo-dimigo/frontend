@@ -65,7 +65,7 @@ const router = new Router({
     {
       path: '*',
       name: 'notFound',
-      component: () => import(/* webpackChunkName: "notFound" */ './views/NotFound.vue'),
+      component: () => import(/* webpackChunkName: "not-found" */ './views/NotFound.vue'),
       meta: {
         title: 'Not Found'
       }
