@@ -10,20 +10,20 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'newsfeed',
-      component: () => import('./views/Newsfeed.vue'),
+      name: 'dashboard',
+      component: () => import('./views/Dashboard.vue'),
       meta: {
-        title: '뉴스피드',
+        title: '대시보드',
         needAuth: true,
         showInNavi: true
       }
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('./views/Dashboard.vue'),
+      path: '/newsfeed',
+      name: 'newsfeed',
+      component: () => import('./views/Newsfeed.vue'),
       meta: {
-        title: '대시보드',
+        title: '뉴스피드',
         needAuth: true,
         showInNavi: true
       }
