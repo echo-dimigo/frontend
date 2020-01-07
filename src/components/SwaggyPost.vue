@@ -249,6 +249,7 @@ export default {
     }
 
     &__more {
+      cursor: pointer;
       color: $dark-gray;
       padding-top: 15px;
     }
