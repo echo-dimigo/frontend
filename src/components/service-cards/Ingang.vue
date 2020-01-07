@@ -5,12 +5,21 @@ export default {
   name: 'Ingang',
 
   async created () {
-    this.ingangs = await DimigoInService.getTodayIngangRooms()
+    this.refresh()
   },
 
   methods: {
-    applyIngang (idx) {
+    async refresh () {
+      this.ingangs = await DimigoInService.getTodayIngangRooms()
+    },
 
+    async toggleIngang (ingang) {
+      if (ingang.status) {
+        await DimigoInService.cancelIngang(ingang.idx)
+      } else {
+        await DimigoInService.requestIngang(ingang.idx)
+      }
+      await this.refresh()
     }
   },
 
@@ -43,7 +52,7 @@ export default {
         </span>
 
         <span
-          @click="applyIngang(ingang.idx)"
+          @click="toggleIngang(ingang)"
           :class="{
             'ingang__list__item__button': true,
             'ingang__list__item__button-applied': ingang.status,

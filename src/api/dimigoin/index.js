@@ -19,5 +19,13 @@ export default {
     let { data: afterschools } = await axios.get('/afterschools/student/today')
     afterschools = afterschools['afterschools'].map(Afterschool)
     return afterschools
+  },
+
+  async requestIngang (idx) {
+    await axios.post(`/ingang/${idx}`)
+  },
+
+  async cancelIngang (idx) {
+    await axios.delete(`/ingang/${idx}`)
   }
 }
