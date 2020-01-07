@@ -1,4 +1,6 @@
 <script>
+import Calender from '@/components/service-cards/Calender'
+import Timetable from '@/components/service-cards/Timetable'
 import Ingang from '@/components/service-cards/Ingang'
 import Afterschool from '@/components/service-cards/Afterschool'
 
@@ -6,7 +8,9 @@ export default {
   name: 'Dashboard',
   components: {
     Ingang,
-    Afterschool
+    Afterschool,
+    Calender,
+    Timetable
   }
 }
 </script>
@@ -15,6 +19,8 @@ export default {
   <div class="dash">
     <h1>대시보드</h1>
     <div class="service-wrapper">
+      <calender class="service" />
+      <timetable class="service" />
       <ingang class="service" />
       <afterschool class="service" />
     </div>
