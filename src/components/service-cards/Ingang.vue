@@ -26,7 +26,7 @@ export default {
   <div class="ingang">
     <div class="ingang__header">
       <h3 class="ingang__header__title">
-        <i class="ingang__icon icon-internet-class" />인강실 신청
+        <i class="ingang__icon icon-internet-class" />오늘의 인강실
       </h3>
     </div>
     <div class="ingang__list">
