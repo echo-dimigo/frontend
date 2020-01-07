@@ -2,11 +2,14 @@
 import { mapGetters } from 'vuex'
 
 import EchoHeader from '@/components/EchoHeader.vue'
-import EchoFooter from '@/components/EchoFooter.vue'
 import SwaggyProfile from '@/components/SwaggyProfile.vue'
 import SwaggyNavigation from '@/components/SwaggyNavigation.vue'
 import SwaggyNotification from '@/components/SwaggyNotification.vue'
 import SwaggyMeal from '@/components/SwaggyMeal.vue'
+
+const EchoFooter = () => import(
+  /* webpackChunkName: "echo-footer" */ '@/components/EchoFooter.vue'
+)
 
 export default {
   name: 'EchoWrapper',
