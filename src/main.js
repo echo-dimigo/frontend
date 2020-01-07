@@ -24,10 +24,6 @@ Vue.use(VueToast, {
   position: 'top-right'
 })
 
-if (localStorage.accessToken) {
-  store.commit('login', localStorage)
-}
-
 VueRipple.zIndex = 55
 Vue.directive('ripple', VueRipple)
 

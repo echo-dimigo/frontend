@@ -8,7 +8,6 @@ export default {
     state.userInfo = User(decoded.identity[0])
     state.accessToken = accessToken
 
-    localStorage.setItem('accessToken', accessToken)
     localStorage.setItem('refreshToken', refreshToken)
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
@@ -18,7 +17,6 @@ export default {
     state.userInfo = {}
     state.accessToken = null
 
-    localStorage.removeItem('accessToken')
     localStorage.removeItem('refreshToken')
 
     delete axios.defaults.headers.common['Authorization']

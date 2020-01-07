@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 import state from './state'
 import mutations from './mutations'
@@ -12,5 +13,7 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  getters
+  getters,
+
+  plugins: [createPersistedState()]
 })
