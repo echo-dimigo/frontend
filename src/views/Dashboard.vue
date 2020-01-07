@@ -1,10 +1,12 @@
 <script>
 import Ingang from '@/components/service-cards/Ingang'
+import Afterschool from '@/components/service-cards/Afterschool'
 
 export default {
   name: 'Dashboard',
   components: {
-    Ingang
+    Ingang,
+    Afterschool
   }
 }
 </script>
@@ -14,6 +16,7 @@ export default {
     <h1>대시보드</h1>
     <div class="service-wrapper">
       <ingang class="service" />
+      <afterschool class="service" />
     </div>
   </div>
 </template>
