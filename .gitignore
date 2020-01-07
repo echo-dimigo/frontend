@@ -1,10 +1,14 @@
+# For macOS
 .DS_Store
+
+# Dependencies
 node_modules
+
+# Build directory
 /dist
 
-# local env files
-.env.local
-.env.*.local
+# Env files
+.env.*
 
 # Log files
 npm-debug.log*
@@ -19,3 +23,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Lock files
+yarn.lock
+package-lock.json

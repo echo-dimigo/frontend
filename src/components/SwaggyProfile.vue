@@ -9,7 +9,8 @@ export default {
       'user'
     ]),
     photoURI () {
-      return `https://api.dimigo.hs.kr/user_photo/${this.user.photo}`
+      return process.env.VUE_APP_DIMIGO_API_URL +
+        `/user_photo/${this.user.photo}`
     }
   },
 

@@ -6,7 +6,11 @@ export default {
   computed: {
     ...mapGetters([
       'user'
-    ])
+    ]),
+    photoURI () {
+      return process.env.VUE_APP_DIMIGO_API_URL +
+        `/user_photo/${this.user.photo}`
+    }
   }
 }
 </script>
@@ -20,7 +24,7 @@ export default {
         <div
           class="profile__info__user__photo"
           :style="{
-            'background-image': `url('https://api.dimigo.hs.kr/user_photo/${user.photo}')`
+            'background-image': `url('${photoURI}')`
           }"
         />
         <span class="profile__info__user__text">

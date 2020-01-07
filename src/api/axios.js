@@ -9,7 +9,7 @@ Vue.use(VueToast, {
 })
 
 export const configAxios = () => {
-  axios.defaults.baseURL = 'https://api.dimigo.in'
+  axios.defaults.baseURL = process.env.VUE_APP_ECHO_API_URL
   axios.interceptors.response.use(response => {
     return response
   }, async error => {
