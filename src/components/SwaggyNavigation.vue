@@ -1,5 +1,6 @@
 <script>
 import { TagService } from '@/api/service'
+import router from '@/router'
 
 export default {
   name: 'SwaggyNavigation',
@@ -19,11 +20,18 @@ export default {
     this.loading = true
 
     this.tags = await TagService.getAllTag()
-    this.tags = this.tags.map(v => {
-      v.notification = 0 // 나중에 알림 API 생기면 수정
-      v.to = `/tag/${v.idx}`
-      return v
+    this.tags.map(tag => {
+      tag.notification = 0 // 나중에 알림 API 생기면 수정
+      tag.to = `/tag/${tag.idx}`
     })
+
+    this.routes = router.options.routes
+      .filter(route => route.meta.showInNavi)
+      .map(route => ({
+        name: route.meta.title,
+        notification: 0,
+        to: route.path
+      }))
 
     this.loading = false
   },
@@ -32,33 +40,7 @@ export default {
     return {
       tags: [],
       loading: false,
-      menus: [
-        {
-          name: '대시보드',
-          notification: 0,
-          to: '/dashboard'
-        },
-        {
-          name: '뉴스피드',
-          notification: 0,
-          to: '/'
-        },
-        {
-          name: '구독 태그 전체',
-          notification: 0,
-          to: '/tag/subscribed'
-        },
-        {
-          name: '태그 전체',
-          notification: 0,
-          to: '/tag/all'
-        },
-        {
-          name: '클립한 글',
-          notification: 0,
-          to: '/post/cliped'
-        }
-      ]
+      routes: []
     }
   }
 }
@@ -69,7 +51,7 @@ export default {
     <div class="nav__item__box">
       <div
         :key="`item-${i}`"
-        v-for="(item, i) in [...menus, ...tags]"
+        v-for="(item, i) in [...routes, ...tags]"
         :class="{
           'nav__item': true,
           'nav__item-current': isCurrent(item)

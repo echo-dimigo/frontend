@@ -14,7 +14,8 @@ const router = new Router({
       component: () => import('./views/Newsfeed.vue'),
       meta: {
         title: '뉴스피드',
-        needAuth: true
+        needAuth: true,
+        showInNavi: true
       }
     },
     {
@@ -23,7 +24,8 @@ const router = new Router({
       component: () => import('./views/Dashboard.vue'),
       meta: {
         title: '대시보드',
-        needAuth: true
+        needAuth: true,
+        showInNavi: true
       }
     },
     {
@@ -50,7 +52,8 @@ const router = new Router({
       component: () => import('./views/TagList.vue'),
       meta: {
         title: '전체 태그 보기',
-        needAuth: true
+        needAuth: true,
+        showInNavi: true
       }
     },
     {
