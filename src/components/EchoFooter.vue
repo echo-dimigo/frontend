@@ -7,7 +7,7 @@ export default {
 <template>
 <footer class="footer">
   <span class="footer__text">한국디지털미디어고등학교 SNS 서비스, 에코</span>
-  <span class="footer__text">© 2019 JnJ Communications</span>
+  <span class="footer__text">© 2020 JnJ Communications</span>
 </footer>
 </template>
 
