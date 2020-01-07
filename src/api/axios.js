@@ -2,11 +2,6 @@ import axios from 'axios'
 import store from '@/store'
 
 import Vue from 'vue'
-import VueToast from 'vue-toast-notification'
-
-Vue.use(VueToast, {
-  position: 'top-right'
-})
 
 export const configAxios = () => {
   axios.defaults.baseURL = process.env.VUE_APP_ECHO_API_URL
