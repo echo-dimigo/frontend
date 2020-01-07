@@ -45,44 +45,42 @@ export default {
         }" />
       </div>
     </div>
-    <transition-group name="expand-toggle">
-      <template v-if="expand">
+    <template v-if="expand">
+      <div
+        v-if="noties.length"
+        key="noti-list"
+        class="noti__list"
+      >
         <div
-          v-if="noties.length"
-          key="noti-list"
-          class="noti__list"
+          :key="`noti-${i}`"
+          v-for="(noti, i) in noties"
+          class="noti__list__item"
         >
-          <div
-            :key="`noti-${i}`"
-            v-for="(noti, i) in noties"
-            class="noti__list__item"
-          >
-            <span class="noti__list__item__title">
-              {{ noti.title }}
-            </span>
-            <span class="noti__list__item__content">
-              {{ noti.content }}
-            </span>
-          </div>
+          <span class="noti__list__item__title">
+            {{ noti.title }}
+          </span>
+          <span class="noti__list__item__content">
+            {{ noti.content }}
+          </span>
         </div>
+      </div>
 
-        <div
-          v-else
-          key="noti-list"
-          class="noti__list noti__list-empty"
-        >
-          아직 도착한 알림이 없습니다.
-        </div>
+      <div
+        v-else
+        key="noti-list"
+        class="noti__list noti__list-empty"
+      >
+        아직 도착한 알림이 없습니다.
+      </div>
 
-        <div
-          @click="push('/notification')"
-          key="noti-button"
-          class="noti__button"
-        >
-          알림 모아보기
-        </div>
-      </template>
-    </transition-group>
+      <div
+        @click="push('/notification')"
+        key="noti-button"
+        class="noti__button"
+      >
+        알림 모아보기
+      </div>
+    </template>
   </div>
 </template>
 
@@ -94,7 +92,6 @@ export default {
   border: solid 1.5px rgba(21, 19, 19, 0.05);
 
   background-color: $white;
-
   padding: 6px 15px;
 
   &__icon {
@@ -127,7 +124,7 @@ export default {
     }
 
     &__item {
-      padding: 18px 0;
+      padding: 10px 0;
 
       &:not(:last-child) {
         border-bottom: solid 1.5px rgba(21, 19, 19, 0.05);
@@ -141,13 +138,14 @@ export default {
 
       &__content {
         color: $dark-gray;
+        line-height: 1.2;
       }
     }
   }
 
   &__button {
     cursor: pointer;
-    padding: 1em 0;
+    padding: 0.8rem 0;
 
     display: flex;
     justify-content: center;
@@ -157,15 +155,4 @@ export default {
     font-weight: 600;
   }
 }
-
-.expand-toggle-enter-active, .expand-toggle-leave-active {
-  transition: all 400ms ease;
-}
-
-.expand-toggle-enter, .expand-toggle-leave-to {
-  line-height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
 </style>
