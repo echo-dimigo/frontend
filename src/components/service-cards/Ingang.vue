@@ -50,7 +50,7 @@ export default {
             'ingang__list__item__button-request': !ingang.status
           }"
         >
-          {{ ingang.status ? '신청함' : '신청하기' }}
+          {{ ingang.status ? '취소하기' : '신청하기' }}
         </span>
       </div>
     </div>
@@ -104,15 +104,12 @@ export default {
       }
 
       &__button{
-        color: $brand;
         align-self: flex-end;
+        color: $dark-gray;
 
-        &-request {
-          cursor: pointer;
-        }
+        &-request,
         &-applied {
-          cursor: not-allowed;
-          color: $red;
+          cursor: pointer;
         }
       }
     }
