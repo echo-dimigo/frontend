@@ -8,12 +8,10 @@ import './registerServiceWorker'
 
 import Echoos from './echoos'
 import VuePlaceholders from 'vue-content-placeholders'
-import VueToast from 'vue-toast-notification'
 import VueRipple from 'vue-ripple-directive'
 import VueSweetalert from 'vue-sweetalert2'
 
 import 'dimigoincon'
-import 'vue-toast-notification/dist/index.css'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.config.productionTip = false
@@ -22,9 +20,6 @@ configAxios()
 
 Vue.use(Echoos)
 Vue.use(VuePlaceholders)
-Vue.use(VueToast, {
-  position: 'top-right'
-})
 Vue.use(VueSweetalert, {
   toast: true,
   position: 'top-end',
