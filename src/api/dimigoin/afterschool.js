@@ -1,10 +1,10 @@
 import axios from 'axios'
+import deliverier from '@/api/deliverier'
 import { Afterschool } from '@/api/struct'
 
 export default {
   async getTodayAfterschools () {
-    let { data: afterschools } = await axios.get('/afterschools/student/today')
-    afterschools = afterschools['afterschools'].map(Afterschool)
-    return afterschools
+    let { afterschools } = await deliverier(() => axios.get('/afterschools/student/today'))
+    return afterschools.map(Afterschool)
   }
 }
