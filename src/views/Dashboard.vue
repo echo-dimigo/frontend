@@ -2,15 +2,13 @@
 import Calender from '@/components/service-cards/Calender'
 import Timetable from '@/components/service-cards/Timetable'
 import Ingang from '@/components/service-cards/Ingang'
-import Afterschool from '@/components/service-cards/Afterschool'
 
 export default {
   name: 'Dashboard',
   components: {
     Ingang,
-    Afterschool,
-    Calender,
-    Timetable
+    Timetable,
+    Calender
   }
 }
 </script>
@@ -22,7 +20,6 @@ export default {
       <calender class="service" />
       <timetable class="service" />
       <ingang class="service" />
-      <afterschool class="service" />
     </div>
   </div>
 </template>
