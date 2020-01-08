@@ -14,6 +14,7 @@ import VueSweetalert from 'vue-sweetalert2'
 
 import 'dimigoincon'
 import 'vue-toast-notification/dist/index.css'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 Vue.config.productionTip = false
 
