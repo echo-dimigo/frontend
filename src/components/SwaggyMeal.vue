@@ -1,5 +1,6 @@
 <script>
 import { DimigoInService } from '@/api/service'
+import { format } from 'date-fns'
 
 export default {
   name: 'SwaggyMeal',
@@ -11,6 +12,11 @@ export default {
   methods: {
     toggleExpand () {
       this.expand = !this.expand
+    },
+
+    isPastMeal (item) {
+      const current = format(new Date(), 'HHmm')
+      return item.time < current
     }
   },
 
@@ -30,9 +36,9 @@ export default {
         dinenr: ''
       },
       mealItems: [
-        { name: '아침', code: 'breakfast' },
-        { name: '점심', code: 'lunch' },
-        { name: '저녁', code: 'dinner' }
+        { name: '아침', code: 'breakfast', time: 720 },
+        { name: '점심', code: 'lunch', time: 1250 },
+        { name: '저녁', code: 'dinner', time: 1835 }
       ]
     }
   }
@@ -68,6 +74,13 @@ export default {
           </span>
           <span class="meal__list__item__content">
             {{ meal[item.code] | separateMeal }}
+          </span>
+          <br>
+          <span
+            v-if="isPastMeal(item)"
+            class="meal__list__item__button"
+          >
+            평가하기<i class="icon-arrow-right" />
           </span>
         </div>
       </div>
@@ -109,6 +122,8 @@ export default {
 
   &__list {
     border-top: solid 1.5px rgba(21, 19, 19, 0.05);
+    display: flex;
+    flex-direction: column;
 
     &__item {
       padding: 10px 0;
@@ -125,6 +140,12 @@ export default {
       &__content {
         color: $dark-gray;
         line-height: 20px;
+      }
+
+      &__button {
+        cursor: pointer;
+        float: right;
+        margin-top: 5px;
       }
     }
   }
