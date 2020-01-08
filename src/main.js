@@ -21,10 +21,16 @@ Vue.config.productionTip = false
 configAxios()
 
 Vue.use(Echoos)
-Vue.use(VueSweetalert)
 Vue.use(VuePlaceholders)
 Vue.use(VueToast, {
   position: 'top-right'
+})
+Vue.use(VueSweetalert, {
+  toast: true,
+  position: 'top-end',
+  confirmButtonColor: '#5fae9f',
+  cancelButtonColor: '#c5593b',
+  animation: false
 })
 
 VueRipple.zIndex = 55

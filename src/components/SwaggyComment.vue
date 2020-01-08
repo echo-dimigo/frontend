@@ -35,7 +35,10 @@ export default {
 
     async deleteComment (idx) {
       const result = await this.$swal({
-        title: '확인',
+        toast: false,
+        icon: 'warning',
+        position: 'center',
+        title: '잠깐!',
         text: '정말로 댓글을 지우시겠습니까?',
         type: 'warning',
         showCancelButton: true,

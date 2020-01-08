@@ -61,7 +61,7 @@ export default {
 
     async addComment () {
       if (!this.commentForm.content || !this.commentForm.content.trim()) {
-        this.$toast.error('댓글을 입력해 주세요.')
+        this.$swal('이런!', '댓글을 입력해 주세요.', 'error')
         return
       }
       this.commentPending = true
