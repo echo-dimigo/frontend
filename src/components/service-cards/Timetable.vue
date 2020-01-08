@@ -1,8 +1,17 @@
 <script>
+import { DimigoInService } from '@/api/service'
+
 export default {
   name: 'Timetable',
 
   async created () {
+    this.afscs = await DimigoInService.getTodayAfterschools()
+    this.afscs = this.afscs.map(afsc => ({
+      title: afsc.name,
+      teacher: afsc.teacher,
+      time: `방과 후 ${afsc.time.join(', ')}`
+    }))
+
     this.subjects = [
       {
         title: '국어',
@@ -44,7 +53,8 @@ export default {
 
   data () {
     return {
-      subjects: {}
+      afscs: [],
+      subjects: []
     }
   }
 }
@@ -59,15 +69,15 @@ export default {
     </div>
     <div class="time-table__list">
       <div
-        :key="`subject-${i}`"
-        v-for="(subject, i) in subjects"
+        :key="`item-${i}`"
+        v-for="(item, i) in [...subjects, ...afscs]"
         class="time-table__list__subject"
       >
         <span class="time-table__list__subject__title">
-          {{ subject.time }}교시 {{ subject.title }}
+          {{ item.time }}교시 {{ item.title }}
         </span>
         <span class="time-table__list__subject__teacher">
-          {{ subject.teacher }} 선생님
+          {{ item.teacher }} 선생님
         </span>
       </div>
     </div>
