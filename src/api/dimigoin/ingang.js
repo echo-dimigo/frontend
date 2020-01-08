@@ -5,8 +5,7 @@ import deliverier from '@/api/deliverier'
 export default {
   async getTodayIngangRooms () {
     let { ingangs } = await deliverier(() => axios.get('/ingang'))
-    ingangs = ingangs.map(Ingang)
-    return ingangs
+    return ingangs.map(Ingang)
   },
   async requestIngang (idx) {
     await deliverier(() => axios.post(`/ingang/${idx}`), {
