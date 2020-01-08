@@ -7,9 +7,10 @@ import { configAxios } from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
-import VueContentPlaceholders from 'vue-content-placeholders'
+import VuePlaceholders from 'vue-content-placeholders'
 import VueToast from 'vue-toast-notification'
 import VueRipple from 'vue-ripple-directive'
+import VueSweetalert from 'vue-sweetalert2'
 
 import 'dimigoincon'
 import 'vue-toast-notification/dist/index.css'
@@ -18,8 +19,9 @@ Vue.config.productionTip = false
 
 configAxios()
 
-Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
+Vue.use(VueSweetalert)
+Vue.use(VuePlaceholders)
 Vue.use(VueToast, {
   position: 'top-right'
 })
