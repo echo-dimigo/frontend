@@ -2,7 +2,7 @@ import Vue from 'vue'
 
 export default async (action, handlers = {}) => {
   try {
-    return await action()
+    return (await action()).data
   } catch (error) {
     const status = error.response.status
 
