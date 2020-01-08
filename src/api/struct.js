@@ -98,5 +98,6 @@ export const Afterschool = afsc => ({
   targetGrade: afsc['target_grade'],
   maxCount: afsc['max_of_count'],
   requestCount: afsc['all_request_count'],
-  status: afsc['status']
+  status: afsc['status'],
+  teacher: afsc['teacher_name']
 })
