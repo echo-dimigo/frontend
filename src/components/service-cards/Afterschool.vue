@@ -10,7 +10,7 @@ export default {
 
   methods: {
     getTimeText (time) {
-      return time.join(', ') + ' 타임'
+      return `방과 후 ${time.join(', ')}타임`
     },
     openWindow () {
       window.location.href = 'https://dimigo.in/request/afterschool'
@@ -29,7 +29,7 @@ export default {
   <div class="afsc">
     <div class="afsc__header">
       <h3 class="afsc__header__title">
-        <i class="afsc__icon icon-ball" />오늘의 방과 후
+        <i class="afsc__icon icon-ball" />오늘의 방과 후 수업
         <span
           @click="openWindow"
           class="afsc__header__request"
