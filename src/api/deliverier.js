@@ -1,15 +1,21 @@
 import Vue from 'vue'
 
 export default async (action, handlers = {}) => {
+  let status; let message = ''
+
   try {
-    return (await action()).data
+    const response = await action()
+
+    status = response.status
+    if (Object.keys(handlers).includes(String(status))) {
+      message = handlers[status]
+    }
+
+    if (message) Vue.$toast.success(message)
+
+    return response.data
   } catch (error) {
-    const status = error.response.status
-
-    const message = Object.keys(handlers).includes(String(status))
-      ? handlers[status] : '작업을 수행하던 중 에러가 발생했습니다.'
-
-    Vue.$toast.error(message)
+    if (message) Vue.$toast.error(message)
 
     return Promise.reject(error)
   }
