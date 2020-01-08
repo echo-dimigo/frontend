@@ -15,9 +15,9 @@ export default {
 
     async toggleIngang (ingang) {
       if (ingang.status) {
-        await DimigoInService.cancelIngang(ingang.idx)
+        await DimigoInService.cancelIngang(ingang)
       } else {
-        await DimigoInService.requestIngang(ingang.idx)
+        await DimigoInService.requestIngang(ingang)
       }
       await this.refresh()
     }
