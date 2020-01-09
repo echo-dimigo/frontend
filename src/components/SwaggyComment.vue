@@ -6,6 +6,8 @@ import locale from 'date-fns/locale/ko'
 
 import { CommentService } from '@/api/service'
 
+import Swal from 'sweetalert2'
+
 export default {
   name: 'SwaggyComment',
 
@@ -34,11 +36,8 @@ export default {
     },
 
     async deleteComment (idx) {
-      const result = await this.$swal({
-        toast: false,
-        icon: 'warning',
-        position: 'center',
-        title: '잠깐!',
+      const result = await Swal.fire({
+        title: '확인',
         text: '정말로 댓글을 지우시겠습니까?',
         type: 'warning',
         showCancelButton: true,

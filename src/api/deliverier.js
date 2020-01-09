@@ -5,14 +5,14 @@ export default async (action, handlers = {}) => {
     const response = await action()
     const status = response.status
     if (Object.keys(handlers).includes(String(status))) {
-      Vue.$swal('성공!', handlers[status], 'success')
+      Vue.$toast.success(handlers[status])
     }
 
     return response.data
   } catch (error) {
     const status = error.response.status
     if (Object.keys(handlers).includes(String(status))) {
-      Vue.$swal('이런!', handlers[status], 'error')
+      Vue.$toast.error(handlers[status])
     }
     return Promise.reject(error)
   }
