@@ -5,7 +5,7 @@ export default {
   methods: {
     async login () {
       if (!this.form.id || !this.form.password) {
-        this.$toast.error('모든 입력란을 채워주세요.')
+        this.$swal('이런!', '모든 입력란을 채워 주세요.', 'error')
         return
       }
       this.pending = true
@@ -13,7 +13,7 @@ export default {
         await this.$store.dispatch('login', this.form)
         this.$router.push('/')
       } catch (e) {
-        this.$toast.error('로그인을 실패했습니다.')
+        this.$swal('이런!', '로그인을 실패했습니다.', 'error')
       }
       this.pending = false
     }

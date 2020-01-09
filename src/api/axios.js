@@ -16,7 +16,7 @@ export const configAxios = () => {
         }
         return axios.request(error.config)
       } catch (_error) {
-        Vue.$toast.error('리프레시 토큰이 만료되어 재로그인이 필요합니다.')
+        Vue.$swal('이런!', '리프레시 토큰이 만료되어 재로그인이 필요합니다.', 'error')
       }
     } else {
       throw error
