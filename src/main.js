@@ -24,7 +24,9 @@ Vue.use(VueSweetalert, {
   toast: true,
   position: 'top-end',
   confirmButtonColor: '#5fae9f',
+  confirmButtonText: '확인',
   cancelButtonColor: '#c5593b',
+  cancelButtonText: '취소',
   animation: false
 })
 
