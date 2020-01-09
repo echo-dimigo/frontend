@@ -7,27 +7,21 @@ import { configAxios } from '@/api/axios'
 import './registerServiceWorker'
 
 import Echoos from './echoos'
-import VuePlaceholders from 'vue-content-placeholders'
+import VueContentPlaceholders from 'vue-content-placeholders'
+import VueToast from 'vue-toast-notification'
 import VueRipple from 'vue-ripple-directive'
-import VueSweetalert from 'vue-sweetalert2'
 
 import 'dimigoincon'
-import 'sweetalert2/dist/sweetalert2.min.css'
+import 'vue-toast-notification/dist/index.css'
 
 Vue.config.productionTip = false
 
 configAxios()
 
+Vue.use(VueContentPlaceholders)
 Vue.use(Echoos)
-Vue.use(VuePlaceholders)
-Vue.use(VueSweetalert, {
-  toast: true,
-  position: 'top-end',
-  confirmButtonColor: '#5fae9f',
-  confirmButtonText: '확인',
-  cancelButtonColor: '#c5593b',
-  cancelButtonText: '취소',
-  animation: false
+Vue.use(VueToast, {
+  position: 'top-right'
 })
 
 VueRipple.zIndex = 55

@@ -16,7 +16,7 @@ export default {
   methods: {
     async addPost () {
       if (!this.form.title || !this.form.content) {
-        this.$swal('이런!', '제목과 내용을 채워주세요.', 'error')
+        this.$toast.error('제목과 내용을 채워주세요.')
         return
       }
       this.pending = true
