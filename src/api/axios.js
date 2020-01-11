@@ -5,6 +5,10 @@ import Vue from 'vue'
 
 export const configAxios = () => {
   axios.defaults.baseURL = process.env.VUE_APP_ECHO_API_URL
+
+  const { getters: { accessToken } } = store
+  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+
   axios.interceptors.response.use(response => {
     return response
   }, async error => {
