@@ -27,7 +27,8 @@ Vue.use(VueSweetalert, {
   confirmButtonText: '확인',
   cancelButtonColor: '#c5593b',
   cancelButtonText: '취소',
-  animation: false
+  timer: 1500,
+  timerProgressBar: true
 })
 
 VueRipple.zIndex = 55

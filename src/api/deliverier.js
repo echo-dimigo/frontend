@@ -7,7 +7,8 @@ const Toast = Swal.mixin({
   confirmButtonText: '확인',
   cancelButtonColor: '#c5593b',
   cancelButtonText: '취소',
-  animation: false
+  timer: 1500,
+  timerProgressBar: true
 })
 
 export default async (action, handlers = {}) => {
