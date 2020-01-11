@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Ingang } from '@/api/struct'
+import { Ingang } from '@/api/dimigoin/struct'
 import deliverier from '@/api/deliverier'
 
 export default {

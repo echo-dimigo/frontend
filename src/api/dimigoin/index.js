@@ -1,6 +1,6 @@
-import AfterschoolService from './afterschool'
-import IngangService from './ingang'
-import MealService from './meal'
+import AfterschoolService from './services/afterschool'
+import IngangService from './services/ingang'
+import MealService from './services/meal'
 
 export default {
   ...AfterschoolService,
