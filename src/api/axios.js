@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 
-import Vue from 'vue'
+import Swal from 'sweetalert2'
 
 export const configAxios = () => {
   axios.defaults.baseURL = process.env.VUE_APP_ECHO_API_URL
@@ -20,7 +20,7 @@ export const configAxios = () => {
         }
         return axios.request(error.config)
       } catch (_error) {
-        Vue.$swal('이런!', '리프레시 토큰이 만료되어 재로그인이 필요합니다.', 'error')
+        Swal.fire('이런!', '리프레시 토큰이 만료되어 재로그인이 필요합니다.', 'error')
       }
     } else {
       throw error
