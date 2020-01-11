@@ -76,6 +76,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/echo-dimigo/echo-front.git"
+    "url": "git://github.com/echo-dimigo/frontend.git"
   }
 }
