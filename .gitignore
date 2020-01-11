@@ -24,7 +24,5 @@ yarn-error.log*
 *.sln
 *.sw?
 
-# Lock files
-yarn.lock
+# NPM lockfile
 package-lock.json
-yarn.lock
