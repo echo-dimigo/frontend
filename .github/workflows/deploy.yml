@@ -28,7 +28,6 @@ jobs:
         env:
           VUE_APP_ECHO_API_URL: ${{ secrets.VUE_APP_ECHO_API_URL }}
           VUE_APP_DIMIGO_API_URL: ${{ secrets.VUE_APP_DIMIGO_API_URL }}
-          VUE_APP_DISTRIBUTE_CDN: ${{ secrets.VUE_APP_DISTRIBUTE_CDN }}
 
       - name: Deploy
         env:
