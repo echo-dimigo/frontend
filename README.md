@@ -27,7 +27,18 @@ yarn serve
 
 * Github: [@echo-dimigo](https://github.com/echo-dimigo)
 
-## Used Stacks
+## Used Stacks in Frontend
+`Vue` as a SPA Framework<br>
+`Vue-Router` to implement single page routing<br>
+`Vuex` to manage statement<br>
+`Github Actions` as a Continuous Delivery Service<br>
+`AWS S3` as a Content Delivery Network<br>
+`Docker` to distribute web app effectively<br>
+`JWT` to authenticate user identity<br>
+`ESLint` to enforce code style<br>
+`SCSS` as a CSS Pre-Processor<br>
+`Webpack` to bundle modules<br>
+`PWA` to provide push notification (future)<br>
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
