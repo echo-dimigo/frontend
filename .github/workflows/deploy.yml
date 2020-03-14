@@ -1,37 +1,37 @@
-name: Deploy ECHO
-on:
-  push:
-    branches:
-      - master
+# name: Deploy ECHO
+# on:
+#   push:
+#     branches:
+#       - master
 
-jobs:
-  deploy:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@master
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-18.04
+#     steps:
+#       - name: Checkout source code
+#         uses: actions/checkout@master
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+#       - name: Cache node modules
+#         uses: actions/cache@v1
+#         with:
+#           path: node_modules
+#           key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+#           restore-keys: |
+#             ${{ runner.OS }}-build-
+#             ${{ runner.OS }}-
 
-      - name: Install Dependencies
-        run: yarn install
+#       - name: Install Dependencies
+#         run: yarn install
 
-      - name: Build
-        run: yarn build
-        env:
-          VUE_APP_ECHO_API_URL: ${{ secrets.VUE_APP_ECHO_API_URL }}
-          VUE_APP_DIMIGO_API_URL: ${{ secrets.VUE_APP_DIMIGO_API_URL }}
+#       - name: Build
+#         run: yarn build
+#         env:
+#           VUE_APP_ECHO_API_URL: ${{ secrets.VUE_APP_ECHO_API_URL }}
+#           VUE_APP_DIMIGO_API_URL: ${{ secrets.VUE_APP_DIMIGO_API_URL }}
 
-      - name: Deploy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: |
-          yarn deploy
+#       - name: Deploy
+#         env:
+#           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         run: |
+#           yarn deploy
